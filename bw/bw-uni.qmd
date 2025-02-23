@@ -3,3 +3,26 @@ title: "Univariate Viz"
 ---
 
 Use this file to generate a professional looking **univariate** visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+
+```{r}
+library(tidyverse)
+library (sf)
+library (maps)
+library (RColorBrewer)
+library (gplots)
+library(socviz)
+library (leaflet)
+library (devtools)
+library(ggthemes)
+library(viridis)
+```
+
+```{r}
+#|fig-cap:"This figure shows the favorite temperature *in degrees Celcius* that students in the STATS 112 course have. The greater the frequency (y-axis) means the greater number of students that like the same temperature."
+#|fig_alt:" This visualization is of a bar graph that represents students' favorite temperature in degrees Celcius. The biggest takeaway is that students most like the temperature between `15-25 degrees. Data from class survey- "https://mac-stat.github.io/data/high_peaks.csv"
+
+ggplot(survey, aes(x=fave_temp,))+
+  geom_bar(alpha= 0.75, width=2,fill="black", color="white")+
+  labs(x="Temperature (C)", y="Frequency", title= "STAT 112 Students' Favorite Temperature")
+```
+
