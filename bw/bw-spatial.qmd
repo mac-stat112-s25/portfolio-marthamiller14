@@ -14,45 +14,39 @@ library (devtools)
 library(ggthemes)
 ```
 
+
 ```{r}
 starbucks <- read.csv("https://mac-stat.github.io/data/starbucks.csv")
 ```
+
 ```{r}
-cma_boundaries <- ne_states(
-  country = c("canada", "mexico", "united states of america"),
-  returnclass = "sf")
+library(dplyr)
+
+# Check and rename if necessary
+starbucks <- starbucks %>%
+  rename_all(tolower)  # Converts all column names to lowercase
+
+# Use the correct column name
+starbucks %>%
+  filter(country == "US", state.province == "MN")  # Adjust based on actual column name
+
 ```
 
 ```{r}
-world_boundaries <- ne_countries(returnclass = "sf")
+starbucks_mn <- starbucks |>   
+  filter(state.province== "MN")
 ```
 
 
 ```{r}
-library(rnaturalearth)
+#|fig_cap: "A spatial point map displaying the locations of Starbucks stores within Minnesota. The distribution highlights store density in the Twin Cities which is the major metropolitan area."
 
-# Get info about country boundaries across the world
-# in a "sf" or simple feature format
-world_boundaries <- ne_countries(returnclass = "sf")
+#|fig_alt: "A point map (interactive) of Minnesota showing the locations of Starbucks stores. Densely clustered points appear in major cities, with sparser distribution in rural areas. Another key takeaway is that there are more concentrated in the Twin Cities than the rest of Minnesota. The map provides a visual representation of Starbucks' geographic presence across the state. Data is from starbucks https://mac-stat.github.io/data/starbucks.csv".
+
+leaflet(data = starbucks_mn) |> 
+  addTiles() |> 
+  addCircles(color = col2hex("darkgreen"))
 ```
 
 
-```{r}
-#|fig_cap: "A spatial point map displaying the locations of Starbucks stores across North America. The distribution highlights store density in urban centers and major metropolitan areas."
-
-#|fig_alt: "A point map of North America showing the locations of Starbucks stores. Densely clustered points appear in major cities, with sparser distribution in rural areas. Another key takeaway is that there are more concentrated in the United States than Canada or Mexico. The map provides a visual representation of Starbucks' geographic presence across the continent. Data is from starbucks https://mac-stat.github.io/data/starbucks.csv".
-
-ggplot(cma_boundaries) + 
-  geom_sf() + 
-  geom_point(
-    data = starbucks_cma,
-    aes(x = Longitude, y = Latitude),
-    alpha = 0.3,
-    size = 0.2,
-    color = "darkgreen", 
-    title="Starbucks Locations in North America"
-  ) +
-  coord_sf(xlim = c(-179.14, -50), ylim = c(14.54, 83.11)) +
-  theme_map()
-```
 
