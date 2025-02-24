@@ -18,8 +18,15 @@ library(viridis)
 ```
 
 ```{r}
-#|fig-cap:"This figure shows the relationship between the temperature at 9:00 AM and 3:00 PM in the 3 locations; Hobart, Uluru, and Wollogong. The x-axis shows the temperature at 3:00 pm, y-axis shows the temperature at 9:00 am, and the colors differentiate the location." 
-#|fig_alt:" This visualization is a scatter plot with 3 different colors that represent each location and their correlating temperatures. The biggest takeaways are that the there is a medium/strong and positive relationship in all of the locations, and that Uluru has typically the greatest temperatures. The data is from weather-"https://mac-stat.github.io/data/weather_3_locations.csv"
+weather <- read.csv("https://mac-stat.github.io/data/weather_3_locations.csv") |> 
+  mutate(date = as.Date(date))  
+```
+
+
+```{r}
+#|fig-cap: "This figure shows the relationship between the temperature at 9:00 AM and 3:00 PM in the 3 locations; Hobart, Uluru, and Wollogong. The x-axis shows the temperature at 3:00 pm, y-axis shows the temperature at 9:00 am, and the colors differentiate the location." 
+
+#|fig_alt: " This visualization is a scatter plot with 3 different colors that represent each location and their correlating temperatures. The biggest takeaways are that the there is a medium/strong and positive relationship in all of the locations, and that Uluru has typically the greatest temperatures. The data is from weather-https://mac-stat.github.io/data/weather_3_locations.csv"
 
 ggplot(weather, aes(y = temp3pm, x = temp9am, color = location)) + 
   geom_point(alpha=0.5)+

@@ -16,10 +16,16 @@ library(ggthemes)
 library(viridis)
 ```
 
+```{r}
+weather <- read.csv("https://mac-stat.github.io/data/weather_3_locations.csv") |> 
+  mutate(date = as.Date(date))  
+```
+
 
 ```{r}
-#|fig_cap:"Temperature readings at 3:00 AM and 9:00 AM across multiple locations, with indications of whether rainfall occurred. The graph highlights temperature variations and potential correlations with rainfall."
-#|fig_alt:"A scatter plot displaying temperature readings at 3:00 AM and 9:00 AM for multiple locations, with additional data indicating whether it rained. The x-axis temperature at 9:00 AM, while the y-axis shows temperature values at 3:00 PM. Different shapes distinguish rainy and non-rainy conditions, illustrating potential trends in temperature shifts due to precipitation. The biggest takeaways are that the there is a medium/strong and positive relationship in all of the locations, and that Uluru has typically the greatest temperatures. Additionally, there seems to be more rain in hobart than the other two locations. The data is from weather-"https://mac-stat.github.io/data/weather_3_locations.csv"
+#|fig_cap: "Temperature readings at 3:00 AM and 9:00 AM across multiple locations, with indications of whether rainfall occurred. The graph highlights temperature variations and potential correlations with rainfall."
+
+#|fig_alt: "A scatter plot displaying temperature readings at 3:00 AM and 9:00 AM for multiple locations, with additional data indicating whether it rained. The x-axis temperature at 9:00 AM, while the y-axis shows temperature values at 3:00 PM. Different shapes distinguish rainy and non-rainy conditions, illustrating potential trends in temperature shifts due to precipitation. The biggest takeaways are that the there is a medium/strong and positive relationship in all of the locations, and that Uluru has typically the greatest temperatures. Additionally, there seems to be more rain in hobart than the other two locations. The data is from weather-https://mac-stat.github.io/data/weather_3_locations.csv"
 
 ggplot(weather, aes(y = temp3pm, x = temp9am, color = location, shape = raintoday)) + 
   geom_point(alpha=0.5)+
