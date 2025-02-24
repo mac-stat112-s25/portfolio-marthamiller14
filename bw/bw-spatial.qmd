@@ -3,3 +3,32 @@ title: "Spatial Viz"
 ---
 
 Use this file to generate a professional looking **spatial** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+```{r}
+library (sf)
+library (maps)
+library (RColorBrewer)
+library (gplots)
+library(socviz)
+library (leaflet)
+library (devtools)
+library(ggthemes)
+```
+
+```{r}
+#|fig_cap:"A spatial point map displaying the locations of Starbucks stores across North America. The distribution highlights store density in urban centers and major metropolitan areas."
+#|fig_alt:"A point map of North America showing the locations of Starbucks stores. Densely clustered points appear in major cities, with sparser distribution in rural areas. Another key takeaway is that there are more concentrated in the United States than Canada or Mexico. The map provides a visual representation of Starbucks' geographic presence across the continent. Data is from starbucks https://mac-stat.github.io/data/starbucks.csv".
+
+ggplot(cma_boundaries) + 
+  geom_sf() + 
+  geom_point(
+    data = starbucks_cma,
+    aes(x = Longitude, y = Latitude),
+    alpha = 0.3,
+    size = 0.2,
+    color = "darkgreen", 
+    title="Starbucks Locations in North America"
+  ) +
+  coord_sf(xlim = c(-179.14, -50), ylim = c(14.54, 83.11)) +
+  theme_map()
+```
+
