@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>5&nbsp; Spatial Viz – COMP/STAT112 Notebook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../ica/ica-uni.html" rel="next">
+<link href="../bw/bw-quad.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="../site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="../site_libs/leaflet-1.3.1/leaflet.js"></script><link href="../site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="../site_libs/proj4-2.6.2/proj4.min.js"></script><script src="../site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="../site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="../site_libs/leaflet-binding-2.2.2/leaflet.js"></script><link rel="stylesheet" href="../style/custom.css">
+</head>
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/bw-spatial.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Martha Miller</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Best Work</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-uni.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-bi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Bivariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-tri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Trivariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-quad.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quadvariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-spatial.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">In-class Activities</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-uni.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-bi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bivariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-multi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mulivariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-spatial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Spatial Viz</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/bw-spatial.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">
+<span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span>
+</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><p>Use this file to generate a professional looking <strong>spatial</strong> visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span> (sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span> (maps)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span> (RColorBrewer)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">library</span> (gplots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'gplots'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    lowess</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(socviz)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">library</span> (leaflet)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">library</span> (devtools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: usethis</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(ggthemes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>starbucks <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/starbucks.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Check and rename if necessary</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>starbucks <span class="ot">&lt;-</span> starbucks <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">rename_all</span>(tolower)  <span class="co"># Converts all column names to lowercase</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="co"># Use the correct column name</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>starbucks <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"US"</span>, state.province <span class="sc">==</span> <span class="st">"MN"</span>)  <span class="co"># Adjust based on actual column name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        brand store.number                          store.name ownership.type
+1   Starbucks 16960-177066             Target Alexandria T-821       Licensed
+2   Starbucks  76316-95687               Target Andover T-2025       Licensed
+3   Starbucks 25535-241231       Round Lake Blvd and Northdale  Company Owned
+4   Starbucks  72682-76602    Super Target Apple Valley ST-643       Licensed
+5   Starbucks 76896-121294 Super Target Apple Vly South ST-239       Licensed
+6   Starbucks 21376-209526 Lexington and Red Fox - Arden Hills  Company Owned
+7   Starbucks 15516-156753                 Target Baxter T-659       Licensed
+8   Starbucks 11880-106241       Hwy 371 and Woida Road-Baxter  Company Owned
+9   Starbucks 17378-177052               Target Bemidji T-657.       Licensed
+10  Starbucks  76115-88842         Super Target Blaine ST-1832       Licensed
+11  Starbucks 20107-189627           109th and Hwy 65 - Blaine  Company Owned
+12  Starbucks 26122-243619                  MOA 3rd Floor C310  Company Owned
+13  Starbucks   2578-36339        98th and Lyndale-Bloomington  Company Owned
+14  Starbucks  10077-98295                  Mall of America II  Company Owned
+15  Starbucks   2705-84660     164 E. Broadway - 1st level MOA  Company Owned
+16  Starbucks     2220-665          Southtown - I-494 and Penn  Company Owned
+17    Teavana 28432-249726           Teavana - Mall of America  Company Owned
+18  Starbucks  76187-88840              Target Bloomington T-5       Licensed
+19  Starbucks   9605-97352  Brooklyn Ctr-Brooklyn Blvd. &amp; 55th  Company Owned
+20  Starbucks  76133-88561          Target Brooklyn Park T-693       Licensed
+21  Starbucks 21555-204764                 Target North Campus       Licensed
+22  Starbucks 47126-254733        Hy Vee @ Brooklyn Park Kiosk       Licensed
+23  Starbucks 48065-254734               Hyvee @ Brooklyn Park       Licensed
+24  Starbucks  76224-90369                Target Buffalo T-861       Licensed
+25  Starbucks 76809-110952     Super Target Burnsville ST-2340       Licensed
+26    Teavana 28371-249964         Teavana - Burnsville Center  Company Owned
+27  Starbucks 23397-220084              CR 42 and Burnhaven Dr  Company Owned
+28  Starbucks 48164-261724       Cambridge - Hwy 95 and Hwy 65  Company Owned
+29  Starbucks 23160-226966    Hwy 169 and Elm Creek - Champlin  Company Owned
+30  Starbucks  76112-88843       Super Target Champlin ST-1831       Licensed
+31  Starbucks  2450-198665          Chanhassen - Dakota Ave II  Company Owned
+32  Starbucks 20793-208085             Target Chanhassen T-862       Licensed
+33  Starbucks  72649-48359         Super Target Chaska ST-1352       Licensed
+34  Starbucks 23669-232351           Target Coon Rapids T-1144       Licensed
+35  Starbucks  10743-99776          Coon Rapids-Foley &amp; Hwy 10  Company Owned
+36  Starbucks  76206-88844              Target Northtown T-820       Licensed
+37  Starbucks   9479-96696      Cottage Grove-E. Point Douglas  Company Owned
+38  Starbucks 20345-204770          Target Cottage Grove T-662       Licensed
+39  Starbucks 22725-223764     Bass Lake Rd &amp; Broadway-Crystal  Company Owned
+40  Starbucks 15514-141825                   Target Duluth T-4       Licensed
+41    Teavana 28464-250041          Teavana - Miller Hill Mall  Company Owned
+42  Starbucks 21634-213712          Woodland Ave &amp; College St.  Company Owned
+43  Starbucks   2733-88041           1405 Miller Trunk Highway  Company Owned
+44  Starbucks   9711-98049             Duluth - Superior &amp; 4th  Company Owned
+45  Starbucks   2619-53139             2040 Cliff Road - Eagan  Company Owned
+46  Starbucks   2469-14451                       Eagan Station  Company Owned
+47  Starbucks 47509-257827                Hy Vee - Eagan #1165       Licensed
+48  Starbucks 70341-140691                  Kowalski's - Eagan       Licensed
+49  Starbucks 20688-204064   Cedar &amp; Hwy 13-TC Premium Outlets  Company Owned
+50  Starbucks    2366-7808  Hwy 169 and Anderson Lakes Parkway  Company Owned
+51  Starbucks    2325-2482            582 Prairie Center Drive  Company Owned
+52  Starbucks 26250-243426                    62 and Shady Oak  Company Owned
+53    Teavana 28331-250065       Teavana - Eden Prairie Center  Company Owned
+54  Starbucks   2599-47139 930 Prairie Center Dr- Eden Prairie  Company Owned
+55    Teavana 28473-250151          Teavana - Southdale Center  Company Owned
+56  Starbucks 21755-192244                       Jerry's Edina       Licensed
+57  Starbucks     271-1488       3215 Galleria - Galleria Mall  Company Owned
+58  Starbucks     274-1489      3939 W. 50th - 50th and France  Company Owned
+59  Starbucks 16011-154128               Macy's-Southdale #231       Licensed
+60  Starbucks 24961-238825 Edina - Hwy 100 and Industrial Blvd  Company Owned
+61  Starbucks   2592-54119            Edina - Hwy 100 &amp; Vernon  Company Owned
+62  Starbucks 76641-110944          Super Target Edina ST-2313       Licensed
+63  Starbucks 18565-178125        France Avenue &amp; 76th - Edina  Company Owned
+64  Starbucks 20689-206848  Highway 169 and Freeport-Elk River  Company Owned
+65  Starbucks 27578-238022              Kowalski's - Excelsior       Licensed
+66  Starbucks 20343-204765           Target Forest Lake T-1244       Licensed
+67  Starbucks   2621-61481                         Forest Lake  Company Owned
+68  Starbucks 24962-238826          Central and 53rd - Fridley  Company Owned
+69  Starbucks     2228-659       Hwy 55 and Golden Valley Road  Company Owned
+70  Starbucks  76645-97519           Target Grand Rapids T-904       Licensed
+71  Starbucks 20342-204766              Target Hastings T-1245       Licensed
+72  Starbucks   9359-96468          Hwy 7 &amp; Hopkins Crossroads  Company Owned
+73  Starbucks 23667-232356          Target - Hutchinson T-1210       Licensed
+74  Starbucks 16842-138228   Target Inver Grove Heights T-2519       Licensed
+75  Starbucks 26713-243085            Hy-Vee - Lakeville #1356       Licensed
+76  Starbucks   8959-95199 16227 Kenrick Ave - I35 &amp; Cty Rd 46  Company Owned
+77  Starbucks   9762-97954    Lakeville - I-35 &amp; Kenwood Trail  Company Owned
+78  Starbucks  72684-76620      Super Target Lakeville ST-1484       Licensed
+79  Starbucks  72677-64263     Super Target Lino Lakes ST-1448       Licensed
+80  Starbucks 21372-208604         Madison and Sioux - Mankato  Company Owned
+81  Starbucks  72951-93896                 Hy-Vee - Mankato #2       Licensed
+82  Starbucks 17564-178944        Maple Grove - Dunkirk Square  Company Owned
+83  Starbucks  76808-99120     Super Target Maple Grove T-2193       Licensed
+84  Starbucks    2318-2001                 7979 Wedgewood Lane  Company Owned
+85    Teavana 28570-249741               Teavana - Maple Grove  Company Owned
+86  Starbucks  76709-99117                Target Medina T-2223       Licensed
+87  Starbucks  72669-48339           Target Minneapolis T-1375       Licensed
+88  Starbucks  76188-88825                  Target Crystal T-3       Licensed
+89  Starbucks     295-1494                  25th and Riverside  Company Owned
+90  Starbucks  76974-96449             Target Minneapolis T-52       Licensed
+91  Starbucks 23000-226785            14th and 5th - Dinkytown  Company Owned
+92  Starbucks 17122-175084   University of Minnesota-Lind Hall       Licensed
+93  Starbucks 16152-165904 Target Minneapolis Downtown HQ T-13       Licensed
+94  Starbucks  2452-229484  22nd &amp; Hennepin - Kenwood Crossing  Company Owned
+95  Starbucks  75137-68162        U of MN - Coffman Union Bldg       Licensed
+96  Starbucks    2341-2483      33 S. 6th Street - City Center  Company Owned
+97  Starbucks   8611-92908                 Nicollet &amp; Franklin  Company Owned
+98  Starbucks   2488-21281     U of MN - 615 Washington Ave SE  Company Owned
+99  Starbucks  78063-99510      U of MN/Minneapolis - W Campus       Licensed
+100 Starbucks  76625-95375   Super Target Mpls/Fridley ST-2200       Licensed
+101 Starbucks  72621-28147                Macys -  Minneapolis       Licensed
+102 Starbucks     263-1496           IDS Center - Skyway level  Company Owned
+103 Starbucks   2648-54101 600 Hennepin Ave S - Mayo Clinic Sq  Company Owned
+104 Starbucks     288-1493           5351 Lyndale Avenue South  Company Owned
+105 Starbucks  76653-94395           Target Minneapolis T-1095       Licensed
+106 Starbucks  75788-85011       Double Tree Hotel Minneapolis       Licensed
+107 Starbucks     262-1495    120 S. 6th Street - Skyway level  Company Owned
+108 Starbucks 76736-104469    Target Minnetonka/Hopkins T-0100       Licensed
+109   Teavana 28366-249908          Teavana - Ridgedale Center  Company Owned
+110 Starbucks  72650-46879     Super Target Minnetonka ST-1356       Licensed
+111 Starbucks 76730-100251      Super Target Monticello T-2180       Licensed
+112 Starbucks  8960-103132                 Moorhead-I-94 &amp; 8th  Company Owned
+113 Starbucks 16032-156750              Target Moorhead T-658.       Licensed
+114 Starbucks 26711-243086                Hy-Vee - New Hope #1       Licensed
+115   Teavana 28551-250039            Teavana - Maplewood Mall  Company Owned
+116 Starbucks 17380-177067           Target Northfield T-1211.       Licensed
+117 Starbucks 13347-106328        Hwy 36 and Hwy 5 - 5980 Neal  Company Owned
+118 Starbucks 27918-247538      Hy-Vee - Oakdale Main Entrance       Licensed
+119 Starbucks 26824-243087                      Hy-Vee Oakdale       Licensed
+120 Starbucks 76975-136638         Super Target Otsego ST-2456       Licensed
+121 Starbucks   8922-95305        641 W. Bridge St. - Owatonna  Company Owned
+122 Starbucks 20790-208086              Target Owatonna T-1068       Licensed
+123 Starbucks  2330-245290   Hwy 55 &amp; Vicksburg Ave - Plymouth  Company Owned
+124 Starbucks  72685-76622        Super Target Plymouth ST-664       Licensed
+125 Starbucks   9712-97797        Plymouth - Hwy 55 &amp; NW Blvd.  Company Owned
+126 Starbucks 29841-254985            Target - Red Wing T-1522       Licensed
+127 Starbucks 76815-110950      Super Target Richfield ST-2300       Licensed
+128 Starbucks   3484-92905                    Lyndale and 77th  Company Owned
+129 Starbucks 70009-126633 Doubletree Hotel Rochester Downtown       Licensed
+130 Starbucks 28120-248664                   HyVee Rochester 4       Licensed
+131 Starbucks  72639-32282      Super Target Rochester ST-1351       Licensed
+132   Teavana 28666-250117               Teavana - Apache Mall  Company Owned
+133 Starbucks 76812-110951 Super Target Rochester South ST-232       Licensed
+134 Starbucks  75560-62499                  Kahler Grand Hotel       Licensed
+135 Starbucks 24088-232347                Hy-Vee @ Rochester 2       Licensed
+136 Starbucks  72678-64266         Super Target Rogers ST-1456       Licensed
+137 Starbucks 18163-182985      Hwy 101 &amp; Diamond Lk Rd-Rogers  Company Owned
+138 Starbucks   9652-97788           Rosemount - CR 42 &amp; Hwy 3  Company Owned
+139 Starbucks  76441-90372      Super Target Roseville ST-2101       Licensed
+140 Starbucks     2209-658             NWC Hwy 36 and Fairview  Company Owned
+141 Starbucks 23753-154129                Macy's-Rosedale #233       Licensed
+142 Starbucks 13624-106909          Hwy 36 and Fairview Avenue  Company Owned
+143 Starbucks  76440-97594     Super Target Saint Paul ST-2046       Licensed
+144 Starbucks 47124-248644               Kowalski's - St. Paul       Licensed
+145 Starbucks 10602-101637               Savage-CR 42 &amp; Hwy 13  Company Owned
+146 Starbucks  76116-87623         Super Target Savage ST-1833       Licensed
+147 Starbucks 21371-208605   CR 21 and Old Carriage - Shakopee  Company Owned
+148 Starbucks  72645-32261       Super Target Shoreview ST-619       Licensed
+149 Starbucks 49710-266984              Kowalski's @ Shoreview       Licensed
+150 Starbucks  76223-90370          Target St Cloud East T-930       Licensed
+151 Starbucks  76408-96764      Super Target Knollwood ST-2189       Licensed
+152 Starbucks  75587-80343      MSP Minn D6 Baggage Claim Area       Licensed
+153 Starbucks 75884-101521                  MSP North Ternimal       Licensed
+154 Starbucks   72336-5745   MSP Minn Green Concourse, Gate 69       Licensed
+155 Starbucks 19892-188669           St. Cloud, Division Place  Company Owned
+156 Starbucks  10203-99310   St. Louis Park-Minnetonka &amp; Hwy 7  Company Owned
+157 Starbucks   2696-63425    Excelsior &amp; Grand-St. Louis Park  Company Owned
+158 Starbucks  10156-99311      St. Paul-Grand Ave &amp; Oxford St  Company Owned
+159 Starbucks 20425-204771                Target St. Paul T-68       Licensed
+160 Starbucks     276-1490                   2078 Ford Parkway  Company Owned
+161 Starbucks     2211-638 Snelling &amp; Selby-171 Snelling Ave N  Company Owned
+162 Starbucks   2462-18999     380 St. Peter St-Lawson Commons  Company Owned
+163 Starbucks 76592-100250       Target St Paul/Oakdale T-2135       Licensed
+164 Starbucks 17498-147376                  Hamline University       Licensed
+165 Starbucks 76771-108255       SuperTarget - St. Paul T-2229       Licensed
+166 Starbucks  76130-88841             Target Stillwater T-931       Licensed
+167 Starbucks  79211-97807        Kowalski-Stillwater/Oak Park       Licensed
+168 Starbucks 20341-204767        Target Vadnais Heights T-751       Licensed
+169 Starbucks 25515-241175         Hwy 96 and Centerville Road  Company Owned
+170 Starbucks  76666-97597               Target Virginia T-847       Licensed
+171 Starbucks 76979-136639               Target Waconia T-2449       Licensed
+172 Starbucks 10511-101337  Waite Park - 2nd St S &amp; Waite Park  Company Owned
+173 Starbucks   2440-20979        740 E. Lake Street - Wayzata  Company Owned
+174 Starbucks   9526-96609  S. Robert &amp; Thompson-West St. Paul  Company Owned
+175 Starbucks 27985-249186              White Bear Ave &amp; I-694  Company Owned
+176 Starbucks  72719-36379      Kowalski-White Bear Lake #4727       Licensed
+177 Starbucks  76622-99116                Target Winona T-1096       Licensed
+178 Starbucks   2529-35559               8362 Tamarack Village  Company Owned
+179 Starbucks  2241-213605              7230 Valley Creek Road  Company Owned
+180 Starbucks 15230-138227         Target Woodbury East T-2406       Licensed
+181 Starbucks 21296-210564           Woodbury Dr. and Commerce  Company Owned
+182 Starbucks  72701-27209                 Kowalski - Woodbury       Licensed
+183 Starbucks 28021-242084              Target Woodbury T-0694       Licensed
+184 Starbucks 25759-235385            Jerry's Foods - Woodbury       Licensed
+                                              street.address
+1                                              4404 Hwy 29 S
+2                                   2000 Bonker Lake Blvd NW
+3                                      13131 Riverdale Dr NW
+4                                            15150 Cedar Ave
+5                                        15560 Pilot Knob Rd
+6                                       3833 Lexington Ave N
+7                                          14546 Dellwood Dr
+8                                          15091 Edgewood Dr
+9                                     2100 Paul Bunyan Dr NW
+10                                         1500 109th Ave NE
+11                                    1384 109th Avenue, 100
+12              60 E. Broadway, C310, Clover Shopping Center
+13  704-708 West 98th Street, Mall of America - 2nd location
+14                   276 West Market Street, Mall of America
+15             164 E. Broadway, Suite E164, Southtown Center
+16                    7805 Southtown Center, Mall of America
+17                                        128 WEST MARKET ST
+18                                            2555 W 79th St
+19                                        5512 Brooklyn Blvd
+20                                       7535 W Broadway Ave
+21                                     7000 Target Parkway N
+22                                       9409 Zane Ave North
+23                                       9409 Zane Ave North
+24                                      1300 State Hwy 55 NE
+25                      810 County Rd 42W, Burnsville Center
+26                             1178 Burnsville Center, #2010
+27                                     1310 County Road 42 W
+28                                                Highway 95
+29                                        11223 Aquila Drive
+30                                11960 Business Park Blvd N
+31                                  190 Lake Drive East, 140
+32                                             851 W 78th St
+33                                         111 Pioneer Trail
+34                        3300 124th Ave NW, Pine Cone Plaza
+35                                     9920 Foley Blvd, 102A
+36                                    8600 Springbrook Dr NW
+37                            7190 East Point Douglas Rd. S.
+38                                 8655 E Point Douglas Rd S
+39                                     5596 W. Broadway Ave.
+40                   1902 Miller Trunk Hwy, Miller Hill Mall
+41                              1600 Miller Trunk Hwy., #E08
+42                                         1002 Woodland Ave
+43                                 1405 Miller Trunk Highway
+44                                       331 W. Superior St.
+45                  2040 Cliff Rd., Suite 101, Eagan Station
+46                                      3450 Pilot Knob Road
+47                      Yankee Doodle Road / Pilot Knob Road
+48            1646 Diffley Road, Paragon Outlets Twin Cities
+49                           3965 Eagan Outlets Parkway, 455
+50                               9639 Anderson Lakes Parkway
+51                              582 PRAIRIE CENTER DR., #260
+52             TBD Hwy 62 and Shady Oak, Eden Prairie Center
+53         8251 Flying Clould Dr., #1226, Prairieview Center
+54                930 Prairie Center Drive, Southdale Center
+55                                     1075 Southdale Center
+56                                  5101 Vernon Avenue South
+57                                             3215 Galleria
+58                                            3939 W 50th St
+59                                         100 Southdale Ctr
+60                  5122 Edina Industrial Blvd, Vernon Shops
+61                                       5121 Gus Young Lane
+62                                           7000 York Ave S
+63                                           7503 France Ave
+64                                     19179 Freeport Ave, A
+65                                              440 Water St
+66                   356 12th St SW, Forest Lake Marketplace
+67                                2009 W. Broadway Ave., 900
+68          5300 Central Ave NE, Golden Valley Commons, #140
+69                               7802 Olson Memorial Highway
+70                                       2140 S Pokegama Ave
+71                                     875 General Sieben Dr
+72                                          1505 State Hwy 7
+73                                         1370 Highway 15 S
+74                                            7841 Amana Trl
+75                                     16150 Pilot Knob Road
+76                       16227 Kenrick Ave., Argonne Village
+77                                       17740 Kenwood Trail
+78                                         18275 Kenrick Ave
+79                                             749 Apollo Dr
+80                                          1872 Madison Ave
+81                                             2010 Adams St
+82                                   9404 Dunkirk Lane North
+83                                      15300 Grove Circle N
+84                          7979 Wedgewood Lane, Maple Grove
+85                                      12113 ELM CREEK BLVD
+86                                         300 Clydesdale Rd
+87                                         900 Nicollet Mall
+88                                       5537 W Broadway Ave
+89                                             815 25th Ave.
+90                                            2500 E Lake St
+91                                        425 14th Avenue SE
+92                                          207 Church St SE
+93                                        1000 Nicollet Mall
+94                                  2212 Hennepin Ave, Bay 1
+95                                        218 Como Avenue SE
+96                                       33 South 6th Street
+97              2000 Nicollet Ave., Radisson Hotel Metrodome
+98                                     615 Washington Ave SE
+99                                            321 19th Ave S
+100                           755 53rd Ave NE, Nicollet Mall
+101                                          700 On the Mall
+102        80 South 8th Street, Minneapolis Lifestyle Centre
+103                                  600 Hennepin Ave. South
+104                                   5351 Lyndale Ave South
+105                                   1650 New Brighton Blvd
+106                                         1101 LaSalle Ave
+107                                        120 S. 6th Street
+108                     13201 Ridgedale Dr, Ridgedale Center
+109                           12401 Wayzata Blvd, Spc. #2138
+110                                     4802 County Road 101
+111                                         1447 East 7th St
+112                                        906 Holiday Drive
+113                                             3301 US-10 E
+114                          8200 42nd Ave N, Maplewood Mall
+115                               3001 Whitebear Ave., #2025
+116                                         2323 Highway 3 S
+117                                   5980 Neal Ave. N., 800
+118                                           7180 10th St N
+119                                       7120 10th St North
+120                                         15800 87th St NE
+121                           641 West Bridge St., Suite 100
+122                                              301 Park Dr
+123                                  15850 32nd Avenue North
+124                                     4175 Vinewood Lane N
+125                                          2661 Campus Dr.
+126                                           151 Tyler Rd N
+127                                      6445 Richfield Pkwy
+128                       7610 Lyndale Ave. South, Suite 800
+129                                           150 S Broadway
+130                                4200 West Circle Drive NW
+131                      3827 Marketplace Dr NW, Apache Mall
+132                                   1200 12th St. SW, #250
+133                                        4611 Maine Ave SE
+134                                         20 SW Second Ave
+135                                            500 37th St W
+136                                  21615 S Diamond Lake Rd
+137                          13590 Northdale Blvd, Suite 100
+138                                 14903 South Robert Trail
+139                                       1515 W County Rd B
+140                                     2305 Fairview Avenue
+141                      900 Rosedale CTR, Hwy 36 &amp; Fairview
+142                                              1820 Hwy 36
+143                                         1750 S Robert St
+144                                        1261 GRAND AVENUE
+145                                13945 Hwy 13 Frontage Rd.
+146                                             14333 Hwy 13
+147                          8090 Old Carriage Ct N, Suite D
+148                                     3800 N Lexington Ave
+149                                             441 Hwy 96 W
+150                                       120 Lincoln Ave SE
+151                                                8900 SR-7
+152                                       4300 Gulmack Drive
+153                                       4300 Glumack Drive
+154                       4300 Gulmack Drive, Division Place
+155                                  2860 W. Division Street
+156            4201 Minnetonka Blvd., Excelsior Park Commons
+157                                           3850 Grand Way
+158                                          1062 Grand Ave.
+159                                        1744 Suburban Ave
+160                                        2078 FORD PARKWAY
+161                                    171 Snelling Avenue N
+162                                        380 St. Peter St.
+163                                           7900 32nd St N
+164                                       1536 Hewitt Avenue
+165                                      1300 University Ave
+166                                           2021 Market Dr
+167                                          5801 Neal Ave N
+168                                          975 County Rd E
+169                                            1016 E Hwy 96
+170                                           1001 13th St S
+171                 875 E Main St, Marketplace of Waite Park
+172                                     124 2nd Street South
+173                                     740 East Lake Street
+174                                   1470 Roberts St. South
+175                                          1950 Buerkle Rd
+176                                        4391 S. Lake Ave.
+177                        860 Mankato Ave, Tamarack Village
+178                                    8362 Tamarack Village
+179                                     7230 Valley Creek Rd
+180                                          449 Commerce Dr
+181                                    610 Woodbury Dr., 100
+182                                    8505 Valley Creek Rd.
+183                                  7200 Valley Creek Plaza
+184                                      7760 Hargis Parkway
+                   city state.province country  postcode   phone.number
+1            Alexandria             MN      US 563082915   320-763-6661
+2               Andover             MN      US 553044014   763-852-0113
+3                 Anoka             MN      US     55448     6127902009
+4          Apple Valley             MN      US 551247038   952-891-5500
+5          Apple Valley             MN      US 551247286   952-236-3165
+6           Arden Hills             MN      US     55126   651-486-3805
+7                Baxter             MN      US 564259744   218-828-3535
+8                Baxter             MN      US     56425   218-828-2978
+9               Bemidji             MN      US 566015645               
+10               Blaine             MN      US 554494670   763-354-1000
+11               Blaine             MN      US     55434     7637676833
+12          Bloomington             MN      US     55425   612-257-5599
+13          Bloomington             MN      US 554204718   952-881-9877
+14          Bloomington             MN      US 554255522   952-853-1274
+15          Bloomington             MN      US 554255511   952-854-1922
+16          Bloomington             MN      US 554311324   952-885-9985
+17          Bloomington             MN      US     55425   952-853-9880
+18          Bloomington             MN      US 554311277   952-888-7701
+19      Brooklyn Center             MN      US 554293054   763-560-1095
+20        Brooklyn Park             MN      US 554281287   612-425-5400
+21        Brooklyn Park             MN      US     55444               
+22        Brooklyn Park             MN      US     55443   763-488-4500
+23        Brooklyn Park             MN      US     55443   763-488-4500
+24              Buffalo             MN      US 553134321   763-682-4996
+25           Burnsville             MN      US 553374492   952-236-3003
+26           Burnsville             MN      US     55306   952-898-5103
+27           Burnsville             MN      US     55337     6125003915
+28            Cambridge             MN      US     55008   612-257-4407
+29             Champlin             MN      US     55316     6125003927
+30             Champlin             MN      US 553162005   763-354-1006
+31           Chanhassen             MN      US     55317     9522948040
+32           Chanhassen             MN      US     55317   952-470-0206
+33               Chaska             MN      US 553181123   952-361-3043
+34          Coon Rapids             MN      US     55433   763-323-2931
+35          Coon Rapids             MN      US     55448   763 783 3412
+36          Coon Rapids             MN      US 554336033   763-785-0322
+37        Cottage Grove             MN      US 550163024   651-769-0719
+38        Cottage Grove             MN      US     55016   651-458-8179
+39              Crystal             MN      US     55428     7635334869
+40               Duluth             MN      US 558111810   218-727-8851
+41               Duluth             MN      US     55811   218-722-2386
+42               Duluth             MN      US     55811     2187243034
+43               Duluth             MN      US 558115613   218-722-6132
+44               Duluth             MN      US 558024532   218-722-1025
+45                Eagan             MN      US 551222491   651/405-0800
+46                Eagan             MN      US 551223825   651-405-0534
+47                Eagan             MN      US     55122   515-267-2805
+48                Eagan             MN      US 551222213   651-328-8300
+49                Eagan             MN      US     55122     6514545153
+50         Eden Prairie             MN      US 553444155     9529448646
+51         Eden Prairie             MN      US 553447942     9528332170
+52         Eden Prairie             MN      US     55343     6129108947
+53         Eden Prairie             MN      US     55344   305-442-9602
+54         Eden Prairie             MN      US 553447304     9529752951
+55                Edina             MN      US     55435   952-929-1102
+56                Edina             MN      US     55436   952-929-2685
+57                Edina             MN      US 554352509     9529240344
+58                Edina             MN      US 554241244     9529277055
+59                Edina             MN      US 554352403   952-924-6725
+60                Edina             MN      US     55439     6126557209
+61                Edina             MN      US 554361530   952-920-0193
+62                Edina             MN      US 554354285   952-925-4610
+63                Edina             MN      US     55435     9527377820
+64            Elk River             MN      US     55330     7634413991
+65            Excelsior             MN      US     55331   952-229-8300
+66          Forest Lake             MN      US     55025   651-464-4700
+67          Forest Lake             MN      US 550259374   651-464-0688
+68              Fridley             MN      US     55421     6129004914
+69        Golden Valley             MN      US 554274715     7635466775
+70         Grand Rapids             MN      US 557442507   218-326-3031
+71             Hastings             MN      US     55033   651-480-2080
+72              Hopkins             MN      US     55305   952-938-3604
+73           Hutchinson             MN      US     55350   320-587-7113
+74  Inver Grove Heights             MN      US     55077   651-234-2949
+75            Lakeville             MN      US     55044   952-423-9340
+76            Lakeville             MN      US 550448498   952-892-0778
+77            Lakeville             MN      US 550449454   952-898-1373
+78            Lakeville             MN      US 550447306   952-892-5400
+79           Lino Lakes             MN      US 550143035   651-784-7601
+80              Mankato             MN      US     56001    507 6258900
+81              Mankato             MN      US 560016817   507-625-9070
+82          Maple Grove             MN      US     55311     7634161877
+83          Maple Grove             MN      US 553694469   763-447-2506
+84          Maple Grove             MN      US 553699411   763-420-6311
+85          Maple Grove             MN      US     55369   763-493-0040
+86               Medina             MN      US 553404538   763-852-0006
+87          Minneapolis             MN      US 554032530   763-440-9390
+88          Minneapolis             MN      US 554283592   763-533-2231
+89          Minneapolis             MN      US 554541418   612-305-0235
+90          Minneapolis             MN      US 554061976 (612) 721-5701
+91          Minneapolis             MN      US     55414     6123310167
+92          Minneapolis             MN      US     55455               
+93          Minneapolis             MN      US 554032542   612-761-7291
+94          Minneapolis             MN      US     55405     6123745168
+95          Minneapolis             MN      US 554141023   612-625-2037
+96          Minneapolis             MN      US 554023601     6123397084
+97          Minneapolis             MN      US 554042526   612-871-1338
+98          Minneapolis             MN      US 554142931   612-378-7765
+99          Minneapolis             MN      US 554550438   612-625-8585
+100         Minneapolis             MN      US 554211298   763-571-9361
+101         Minneapolis             MN      US     55402     6123752077
+102         Minneapolis             MN      US     55402   612-371-0383
+103         Minneapolis             MN      US 554031816   612/333-9944
+104         Minneapolis             MN      US 554191229   612-821-0686
+105         Minneapolis             MN      US 554131643   612-781-7033
+106         Minneapolis             MN      US 554032046   612-492-2230
+107         Minneapolis             MN      US 554021803   612-371-0555
+108          Minnetonka             MN      US 553051808   952-542-8250
+109          Minnetonka             MN      US     55305   952-544-0018
+110          Minnetonka             MN      US 553452635   952-401-3830
+111          Monticello             MN      US 553624666   763-586-3327
+112            Moorhead             MN      US 565604445   218-233-0392
+113            Moorhead             MN      US     56560   218-233-2953
+114            New Hope             MN      US     55427               
+115     North Maplewood             MN      US     55109   651-777-7397
+116          Northfield             MN      US     55057     5076454777
+117    Oak Park Heights             MN      US 550822190   651-275-8926
+118             Oakdale             MN      US     55128   651-714-3160
+119             Oakdale             MN      US     55128   651-714-3186
+120              Otsego             MN      US 553306546   763-252-1316
+121            Owatonna             MN      US 550606400   507-455-3624
+122            Owatonna             MN      US     55060   507-451-1882
+123            Plymouth             MN      US     55447               
+124            Plymouth             MN      US 554422624   763-553-0302
+125            Plymouth             MN      US 554412692   763-553-3087
+126            Red Wing             MN      US     55066     6513887704
+127           Richfield             MN      US 554236400   612-252-0473
+128           Richfield             MN      US 554234167   612-869-9839
+129           Rochester             MN      US 559046507     5075292433
+130           Rochester             MN      US     55901   507-292-2000
+131           Rochester             MN      US 559013192   507-536-2555
+132           Rochester             MN      US     55902   507-289-3711
+133           Rochester             MN      US 559046929   507-206-5020
+134           Rochester             MN      US 559023027   507-280-6200
+135           Rochester             MN      US     55901   507-289-1815
+136              Rogers             MN      US 553748893   763-428-1394
+137              Rogers             MN      US     55374     7634282083
+138           Rosemount             MN      US 550683106   651-423-7112
+139           Roseville             MN      US 551136005   651-482-0198
+140           Roseville             MN      US 551132724 (651) 697-0215
+141           Roseville             MN      US     55113   651-639-6600
+142           Roseville             MN      US 551134030   651-631-3089
+143          Saint Paul             MN      US 551185112   651-455-6671
+144          Saint Paul             MN      US     55105     6516983366
+145              Savage             MN      US 553782281   952-440-2314
+146              Savage             MN      US 553782153   652-226-1444
+147            Shakopee             MN      US     55379     9524454241
+148           Shoreview             MN      US 551262916   651-486-0048
+149           Shoreview             MN      US     55126               
+150            St Cloud             MN      US 563040822   320-654-0712
+151       St Louis Park             MN      US     55426   952-935-9641
+152             St Paul             MN      US 551113002   612-726-5360
+153             St Paul             MN      US 551113002     6123966531
+154             St Paul             MN      US 551113002     6123966531
+155           St. Cloud             MN      US     56301     3202497890
+156      St. Louis Park             MN      US 554164129   952-922-2084
+157      St. Louis Park             MN      US 554164788    952920-8531
+158            St. Paul             MN      US 551053805   651-221-4465
+159            St. Paul             MN      US     55106   651-778-1188
+160            St. Paul             MN      US 551161813   651-699-9409
+161            St. Paul             MN      US 551046747   651-659-9033
+162            St. Paul             MN      US 551021313   651-222-7118
+163            St. Paul             MN      US 551284054   651-855-0990
+164            St. Paul             MN      US 551041205               
+165            St. Paul             MN      US     55401   651-642-1146
+166          Stillwater             MN      US 550827546   651-439-0292
+167          Stillwater             MN      US 550822177   651-439-9161
+168     Vadnais Heights             MN      US     55127   651-483-9637
+169     Vadnais Heights             MN      US     55127               
+170            Virginia             MN      US 557923254   218-741-6603
+171             Waconia             MN      US 553871081   952-442-9333
+172          Waite Park             MN      US 563871363   320-251-6255
+173             Wayzata             MN      US 553911713   952-249-1555
+174       West St. Paul             MN      US 551183140   651-450-4494
+175     White Bear Lake             MN      US     55110     6124990682
+176     White Bear Lake             MN      US 551103455   651-429-5913
+177              Winona             MN      US 559874867   507-452-7006
+178            Woodbury             MN      US 551253392   651-735-7600
+179            Woodbury             MN      US     55125     6517140357
+180            Woodbury             MN      US     55125   651-239-1874
+181            Woodbury             MN      US     55125     6517399350
+182            Woodbury             MN      US 551252342   651-578-8800
+183            Woodbury             MN      US     55125   651-735-7083
+184            Woodbury             MN      US     55129   952-237-7161
+                     timezone longitude latitude
+1   GMT-06:00 America/Chicago    -95.39    45.85
+2   GMT-06:00 America/Chicago    -93.32    45.22
+3   GMT-06:00 America/Chicago    -93.36    45.21
+4   GMT-06:00 America/Chicago    -93.21    44.73
+5   GMT-06:00 America/Chicago    -93.18    44.72
+6   GMT-06:00 America/Chicago    -93.15    45.06
+7   GMT-06:00 America/Chicago    -94.24    46.37
+8   GMT-06:00 America/Chicago    -94.25    46.37
+9   GMT-06:00 America/Chicago    -94.91    47.49
+10  GMT-06:00 America/Chicago    -93.23    45.17
+11  GMT-06:00 America/Chicago    -93.24    45.17
+12  GMT-06:00 America/Chicago    -93.24    44.86
+13  GMT-06:00 America/Chicago    -93.29    44.83
+14  GMT-06:00 America/Chicago    -93.24    44.86
+15  GMT-06:00 America/Chicago    -93.24    44.85
+16  GMT-06:00 America/Chicago    -93.31    44.86
+17  GMT-06:00 America/Chicago    -93.24    44.85
+18  GMT-06:00 America/Chicago    -93.31    44.86
+19  GMT-06:00 America/Chicago    -93.32    45.06
+20  GMT-06:00 America/Chicago    -93.38    45.09
+21  GMT-06:00 America/Chicago    -93.37    45.14
+22  GMT-06:00 America/Chicago    -93.36    45.13
+23  GMT-06:00 America/Chicago    -93.36    45.12
+24  GMT-06:00 America/Chicago    -93.86    45.17
+25  GMT-06:00 America/Chicago    -93.29    44.75
+26  GMT-06:00 America/Chicago    -93.29    44.74
+27  GMT-06:00 America/Chicago    -93.30    44.75
+28  GMT-06:00 America/Chicago    -93.21    45.57
+29  GMT-06:00 America/Chicago    -93.39    45.16
+30  GMT-06:00 America/Chicago    -93.39    45.17
+31  GMT-06:00 America/Chicago    -93.52    44.86
+32  GMT-06:00 America/Chicago    -93.54    44.86
+33  GMT-06:00 America/Chicago    -93.60    44.83
+34  GMT-06:00 America/Chicago    -93.35    45.20
+35  GMT-06:00 America/Chicago    -93.28    45.15
+36  GMT-06:00 America/Chicago    -93.27    45.13
+37  GMT-06:00 America/Chicago    -92.96    44.83
+38  GMT-06:00 America/Chicago    -92.93    44.82
+39  GMT-06:00 America/Chicago    -93.36    45.05
+40  GMT-06:00 America/Chicago    -92.17    46.81
+41  GMT-06:00 America/Chicago    -92.16    46.80
+42  GMT-06:00 America/Chicago    -92.08    46.82
+43  GMT-06:00 America/Chicago    -92.16    46.81
+44  GMT-06:00 America/Chicago    -92.10    46.78
+45  GMT-06:00 America/Chicago    -93.21    44.79
+46  GMT-06:00 America/Chicago    -93.17    44.83
+47  GMT-06:00 America/Chicago    -93.17    44.84
+48  GMT-06:00 America/Chicago    -93.19    44.80
+49  GMT-06:00 America/Chicago    -93.21    44.81
+50  GMT-06:00 America/Chicago    -93.40    44.84
+51  GMT-06:00 America/Chicago    -93.43    44.85
+52  GMT-06:00 America/Chicago    -93.42    44.89
+53  GMT-06:00 America/Chicago    -93.43    44.85
+54  GMT-06:00 America/Chicago    -93.44    44.86
+55  GMT-06:00 America/Chicago    -93.33    44.88
+56  GMT-06:00 America/Chicago    -93.36    44.91
+57  GMT-06:00 America/Chicago    -93.32    44.88
+58  GMT-06:00 America/Chicago    -93.33    44.91
+59  GMT-06:00 America/Chicago    -93.33    44.88
+60  GMT-06:00 America/Chicago    -93.35    44.86
+61  GMT-06:00 America/Chicago    -93.35    44.91
+62  GMT-06:00 America/Chicago    -93.32    44.88
+63  GMT-06:00 America/Chicago    -93.33    44.87
+64  GMT-06:00 America/Chicago    -93.56    45.32
+65  GMT-06:00 America/Chicago    -93.57    44.90
+66  GMT-06:00 America/Chicago    -93.00    45.27
+67  GMT-06:00 America/Chicago    -93.01    45.28
+68  GMT-06:00 America/Chicago    -93.25    45.06
+69  GMT-06:00 America/Chicago    -93.38    44.98
+70  GMT-06:00 America/Chicago    -93.53    47.21
+71  GMT-06:00 America/Chicago    -92.89    44.74
+72  GMT-06:00 America/Chicago    -93.42    44.93
+73  GMT-06:00 America/Chicago    -94.38    44.87
+74  GMT-06:00 America/Chicago    -93.08    44.82
+75  GMT-06:00 America/Chicago    -93.18    44.72
+76  GMT-06:00 America/Chicago    -93.28    44.71
+77  GMT-06:00 America/Chicago    -93.28    44.69
+78  GMT-06:00 America/Chicago    -93.29    44.68
+79  GMT-06:00 America/Chicago    -93.11    45.18
+80  GMT-06:00 America/Chicago    -93.95    44.17
+81  GMT-06:00 America/Chicago    -93.95    44.17
+82  GMT-06:00 America/Chicago    -93.49    45.13
+83  GMT-06:00 America/Chicago    -93.48    45.13
+84  GMT-06:00 America/Chicago    -93.45    45.10
+85  GMT-06:00 America/Chicago    -93.44    45.09
+86  GMT-06:00 America/Chicago    -93.53    45.05
+87  GMT-06:00 America/Chicago    -93.27    44.97
+88  GMT-06:00 America/Chicago    -93.36    45.05
+89  GMT-06:00 America/Chicago    -93.24    44.96
+90  GMT-06:00 America/Chicago    -93.24    44.95
+91  GMT-06:00 America/Chicago    -93.24    44.98
+92  GMT-06:00 America/Chicago    -93.23    44.97
+93  GMT-06:00 America/Chicago    -93.27    44.97
+94  GMT-06:00 America/Chicago    -93.29    44.96
+95  GMT-06:00 America/Chicago    -93.24    44.97
+96  GMT-06:00 America/Chicago    -93.27    44.98
+97  GMT-06:00 America/Chicago    -93.28    44.96
+98  GMT-06:00 America/Chicago    -93.23    44.97
+99  GMT-06:00 America/Chicago    -93.25    44.97
+100 GMT-06:00 America/Chicago    -93.25    45.07
+101 GMT-06:00 America/Chicago    -93.27    44.98
+102 GMT-06:00 America/Chicago    -93.27    44.98
+103 GMT-06:00 America/Chicago    -93.28    44.98
+104 GMT-06:00 America/Chicago    -93.29    44.91
+105 GMT-06:00 America/Chicago    -93.23    45.00
+106 GMT-06:00 America/Chicago    -93.28    44.97
+107 GMT-06:00 America/Chicago    -93.27    44.98
+108 GMT-06:00 America/Chicago    -93.45    44.97
+109 GMT-06:00 America/Chicago    -93.44    44.97
+110 GMT-06:00 America/Chicago    -93.50    44.92
+111 GMT-06:00 America/Chicago    -93.77    45.29
+112 GMT-06:00 America/Chicago    -96.77    46.85
+113 GMT-06:00 America/Chicago    -96.75    46.86
+114 GMT-06:00 America/Chicago    -93.39    45.03
+115 GMT-06:00 America/Chicago    -93.02    45.03
+116 GMT-06:00 America/Chicago    -93.19    44.43
+117 GMT-06:00 America/Chicago    -92.85    45.03
+118 GMT-06:00 America/Chicago    -92.96    44.96
+119 GMT-06:00 America/Chicago    -92.96    44.96
+120 GMT-06:00 America/Chicago    -93.56    45.28
+121 GMT-06:00 America/Chicago    -93.24    44.08
+122 GMT-06:00 America/Chicago    -93.25    44.09
+123 GMT-06:00 America/Chicago    -93.48    45.02
+124 GMT-06:00 America/Chicago    -93.45    45.03
+125 GMT-06:00 America/Chicago    -93.45    45.01
+126 GMT-06:00 America/Chicago    -92.58    44.57
+127 GMT-06:00 America/Chicago    -93.25    44.88
+128 GMT-06:00 America/Chicago    -93.29    44.86
+129 GMT-06:00 America/Chicago    -92.46    44.02
+130 GMT-06:00 America/Chicago    -92.53    44.07
+131 GMT-06:00 America/Chicago    -92.50    44.06
+132 GMT-06:00 America/Chicago    -92.48    44.00
+133 GMT-06:00 America/Chicago    -92.47    43.95
+134 GMT-06:00 America/Chicago    -92.47    44.02
+135 GMT-06:00 America/Chicago    -92.47    44.06
+136 GMT-06:00 America/Chicago    -93.55    45.20
+137 GMT-06:00 America/Chicago    -93.55    45.20
+138 GMT-06:00 America/Chicago    -93.13    44.73
+139 GMT-06:00 America/Chicago    -93.16    45.01
+140 GMT-06:00 America/Chicago    -93.18    45.01
+141 GMT-06:00 America/Chicago    -93.17    45.01
+142 GMT-06:00 America/Chicago    -93.18    45.01
+143 GMT-06:00 America/Chicago    -93.08    44.89
+144 GMT-06:00 America/Chicago    -93.15    44.94
+145 GMT-06:00 America/Chicago    -93.38    44.75
+146 GMT-06:00 America/Chicago    -93.38    44.74
+147 GMT-06:00 America/Chicago    -93.41    44.78
+148 GMT-06:00 America/Chicago    -93.14    45.06
+149 GMT-06:00 America/Chicago    -93.12    45.08
+150 GMT-06:00 America/Chicago    -94.15    45.57
+151 GMT-06:00 America/Chicago    -93.39    44.94
+152 GMT-06:00 America/Chicago    -93.21    44.88
+153 GMT-06:00 America/Chicago    -93.21    44.88
+154 GMT-06:00 America/Chicago    -93.21    44.88
+155 GMT-06:00 America/Chicago    -94.19    45.55
+156 GMT-06:00 America/Chicago    -93.33    44.95
+157 GMT-06:00 America/Chicago    -93.34    44.93
+158 GMT-06:00 America/Chicago    -93.14    44.94
+159 GMT-06:00 America/Chicago    -93.03    44.95
+160 GMT-06:00 America/Chicago    -93.19    44.92
+161 GMT-06:00 America/Chicago    -93.17    44.95
+162 GMT-06:00 America/Chicago    -93.10    44.95
+163 GMT-06:00 America/Chicago    -92.95    45.00
+164 GMT-06:00 America/Chicago    -93.17    44.97
+165 GMT-06:00 America/Chicago    -93.16    44.95
+166 GMT-06:00 America/Chicago    -92.84    45.04
+167 GMT-06:00 America/Chicago    -92.84    45.03
+168 GMT-06:00 America/Chicago    -93.06    45.05
+169 GMT-06:00 America/Chicago    -93.06    45.08
+170 GMT-06:00 America/Chicago    -92.55    47.51
+171 GMT-06:00 America/Chicago    -93.77    44.85
+172 GMT-06:00 America/Chicago    -94.22    45.55
+173 GMT-06:00 America/Chicago    -93.51    44.97
+174 GMT-06:00 America/Chicago    -93.08    44.90
+175 GMT-06:00 America/Chicago    -93.02    45.04
+176 GMT-06:00 America/Chicago    -93.02    45.07
+177 GMT-06:00 America/Chicago    -91.62    44.03
+178 GMT-06:00 America/Chicago    -92.94    44.94
+179 GMT-06:00 America/Chicago    -92.96    44.93
+180 GMT-06:00 America/Chicago    -92.91    44.94
+181 GMT-06:00 America/Chicago    -92.90    44.94
+182 GMT-06:00 America/Chicago    -92.93    44.92
+183 GMT-06:00 America/Chicago    -92.96    44.93
+184 GMT-06:00 America/Chicago    -92.94    44.89</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>starbucks_mn <span class="ot">&lt;-</span> starbucks <span class="sc">|&gt;</span>   </span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">filter</span>(state.province<span class="sc">==</span> <span class="st">"MN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#|fig_cap: "A spatial point map displaying the locations of Starbucks stores within Minnesota. The distribution highlights store density in the Twin Cities which is the major metropolitan area."</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="co">#|fig_alt: "A point map (interactive) of Minnesota showing the locations of Starbucks stores. Densely clustered points appear in major cities, with sparser distribution in rural areas. Another key takeaway is that there are more concentrated in the Twin Cities than the rest of Minnesota. The map provides a visual representation of Starbucks' geographic presence across the state. Data is from starbucks https://mac-stat.github.io/data/starbucks.csv".</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="fu">leaflet</span>(<span class="at">data =</span> starbucks_mn) <span class="sc">|&gt;</span> </span>
+<span id="cb17-6"><a href="#cb17-6"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb17-7"><a href="#cb17-7"></a>  <span class="fu">addCircles</span>(<span class="at">color =</span> <span class="fu">col2hex</span>(<span class="st">"darkgreen"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Assuming "longitude" and "latitude" are longitude and latitude, respectively</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-3ff8defea1623d14c77a" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-3ff8defea1623d14c77a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircles","args":[[45.85,45.22,45.21,44.73,44.72,45.06,46.37,46.37,47.49,45.17,45.17,44.86,44.83,44.86,44.85,44.86,44.85,44.86,45.06,45.09,45.14,45.13,45.12,45.17,44.75,44.74,44.75,45.57,45.16,45.17,44.86,44.86,44.83,45.2,45.15,45.13,44.83,44.82,45.05,46.81,46.8,46.82,46.81,46.78,44.79,44.83,44.84,44.8,44.81,44.84,44.85,44.89,44.85,44.86,44.88,44.91,44.88,44.91,44.88,44.86,44.91,44.88,44.87,45.32,44.9,45.27,45.28,45.06,44.98,47.21,44.74,44.93,44.87,44.82,44.72,44.71,44.69,44.68,45.18,44.17,44.17,45.13,45.13,45.1,45.09,45.05,44.97,45.05,44.96,44.95,44.98,44.97,44.97,44.96,44.97,44.98,44.96,44.97,44.97,45.07,44.98,44.98,44.98,44.91,45,44.97,44.98,44.97,44.97,44.92,45.29,46.85,46.86,45.03,45.03,44.43,45.03,44.96,44.96,45.28,44.08,44.09,45.02,45.03,45.01,44.57,44.88,44.86,44.02,44.07,44.06,44,43.95,44.02,44.06,45.2,45.2,44.73,45.01,45.01,45.01,45.01,44.89,44.94,44.75,44.74,44.78,45.06,45.08,45.57,44.94,44.88,44.88,44.88,45.55,44.95,44.93,44.94,44.95,44.92,44.95,44.95,45,44.97,44.95,45.04,45.03,45.05,45.08,47.51,44.85,45.55,44.97,44.9,45.04,45.07,44.03,44.94,44.93,44.94,44.94,44.92,44.93,44.89],[-95.39,-93.31999999999999,-93.36,-93.20999999999999,-93.18000000000001,-93.15000000000001,-94.23999999999999,-94.25,-94.91,-93.23,-93.23999999999999,-93.23999999999999,-93.29000000000001,-93.23999999999999,-93.23999999999999,-93.31,-93.23999999999999,-93.31,-93.31999999999999,-93.38,-93.37,-93.36,-93.36,-93.86,-93.29000000000001,-93.29000000000001,-93.3,-93.20999999999999,-93.39,-93.39,-93.52,-93.54000000000001,-93.59999999999999,-93.34999999999999,-93.28,-93.27,-92.95999999999999,-92.93000000000001,-93.36,-92.17,-92.16,-92.08,-92.16,-92.09999999999999,-93.20999999999999,-93.17,-93.17,-93.19,-93.20999999999999,-93.40000000000001,-93.43000000000001,-93.42,-93.43000000000001,-93.44,-93.33,-93.36,-93.31999999999999,-93.33,-93.33,-93.34999999999999,-93.34999999999999,-93.31999999999999,-93.33,-93.56,-93.56999999999999,-93,-93.01000000000001,-93.25,-93.38,-93.53,-92.89,-93.42,-94.38,-93.08,-93.18000000000001,-93.28,-93.28,-93.29000000000001,-93.11,-93.95,-93.95,-93.48999999999999,-93.48,-93.45,-93.44,-93.53,-93.27,-93.36,-93.23999999999999,-93.23999999999999,-93.23999999999999,-93.23,-93.27,-93.29000000000001,-93.23999999999999,-93.27,-93.28,-93.23,-93.25,-93.25,-93.27,-93.27,-93.28,-93.29000000000001,-93.23,-93.28,-93.27,-93.45,-93.44,-93.5,-93.77,-96.77,-96.75,-93.39,-93.02,-93.19,-92.84999999999999,-92.95999999999999,-92.95999999999999,-93.56,-93.23999999999999,-93.25,-93.48,-93.45,-93.45,-92.58,-93.25,-93.29000000000001,-92.45999999999999,-92.53,-92.5,-92.48,-92.47,-92.47,-92.47,-93.55,-93.55,-93.13,-93.16,-93.18000000000001,-93.17,-93.18000000000001,-93.08,-93.15000000000001,-93.38,-93.38,-93.41,-93.14,-93.12,-94.15000000000001,-93.39,-93.20999999999999,-93.20999999999999,-93.20999999999999,-94.19,-93.33,-93.34,-93.14,-93.03,-93.19,-93.17,-93.09999999999999,-92.95,-93.17,-93.16,-92.84,-92.84,-93.06,-93.06,-92.55,-93.77,-94.22,-93.51000000000001,-93.08,-93.02,-93.02,-91.62,-92.94,-92.95999999999999,-92.91,-92.90000000000001,-92.93000000000001,-92.95999999999999,-92.94],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"#006400","weight":5,"opacity":0.5,"fill":true,"fillColor":"#006400","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"limits":{"lat":[43.95,47.51],"lng":[-96.77,-91.62]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+
+
+<!-- -->
+
+
+</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../bw/bw-quad.html" class="pagination-link" aria-label="Quadvariate Viz">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quadvariate Viz</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../ica/ica-uni.html" class="pagination-link" aria-label="Univariate Viz">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb19" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1"></a><span class="co">---</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="an">title:</span><span class="co"> "Spatial Viz"</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="co">---</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a>Use this file to generate a professional looking **spatial** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</span>
+<span id="cb19-8"><a href="#cb19-8"></a><span class="in">```{r}</span></span>
+<span id="cb19-9"><a href="#cb19-9"></a><span class="fu">library</span> (sf)</span>
+<span id="cb19-10"><a href="#cb19-10"></a><span class="fu">library</span> (maps)</span>
+<span id="cb19-11"><a href="#cb19-11"></a><span class="fu">library</span> (RColorBrewer)</span>
+<span id="cb19-12"><a href="#cb19-12"></a><span class="fu">library</span> (gplots)</span>
+<span id="cb19-13"><a href="#cb19-13"></a><span class="fu">library</span>(socviz)</span>
+<span id="cb19-14"><a href="#cb19-14"></a><span class="fu">library</span> (leaflet)</span>
+<span id="cb19-15"><a href="#cb19-15"></a><span class="fu">library</span> (devtools)</span>
+<span id="cb19-16"><a href="#cb19-16"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb19-17"><a href="#cb19-17"></a><span class="in">```</span></span>
+<span id="cb19-18"><a href="#cb19-18"></a></span>
+<span id="cb19-19"><a href="#cb19-19"></a></span>
+<span id="cb19-22"><a href="#cb19-22"></a><span class="in">```{r}</span></span>
+<span id="cb19-23"><a href="#cb19-23"></a>starbucks <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/starbucks.csv"</span>)</span>
+<span id="cb19-24"><a href="#cb19-24"></a><span class="in">```</span></span>
+<span id="cb19-25"><a href="#cb19-25"></a></span>
+<span id="cb19-28"><a href="#cb19-28"></a><span class="in">```{r}</span></span>
+<span id="cb19-29"><a href="#cb19-29"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb19-30"><a href="#cb19-30"></a></span>
+<span id="cb19-31"><a href="#cb19-31"></a><span class="co"># Check and rename if necessary</span></span>
+<span id="cb19-32"><a href="#cb19-32"></a>starbucks <span class="ot">&lt;-</span> starbucks <span class="sc">%&gt;%</span></span>
+<span id="cb19-33"><a href="#cb19-33"></a>  <span class="fu">rename_all</span>(tolower)  <span class="co"># Converts all column names to lowercase</span></span>
+<span id="cb19-34"><a href="#cb19-34"></a></span>
+<span id="cb19-35"><a href="#cb19-35"></a><span class="co"># Use the correct column name</span></span>
+<span id="cb19-36"><a href="#cb19-36"></a>starbucks <span class="sc">%&gt;%</span></span>
+<span id="cb19-37"><a href="#cb19-37"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"US"</span>, state.province <span class="sc">==</span> <span class="st">"MN"</span>)  <span class="co"># Adjust based on actual column name</span></span>
+<span id="cb19-38"><a href="#cb19-38"></a></span>
+<span id="cb19-39"><a href="#cb19-39"></a><span class="in">```</span></span>
+<span id="cb19-40"><a href="#cb19-40"></a></span>
+<span id="cb19-43"><a href="#cb19-43"></a><span class="in">```{r}</span></span>
+<span id="cb19-44"><a href="#cb19-44"></a>starbucks_mn <span class="ot">&lt;-</span> starbucks <span class="sc">|&gt;</span>   </span>
+<span id="cb19-45"><a href="#cb19-45"></a>  <span class="fu">filter</span>(state.province<span class="sc">==</span> <span class="st">"MN"</span>)</span>
+<span id="cb19-46"><a href="#cb19-46"></a><span class="in">```</span></span>
+<span id="cb19-47"><a href="#cb19-47"></a></span>
+<span id="cb19-48"><a href="#cb19-48"></a></span>
+<span id="cb19-51"><a href="#cb19-51"></a><span class="in">```{r}</span></span>
+<span id="cb19-52"><a href="#cb19-52"></a><span class="co">#|fig_cap: "A spatial point map displaying the locations of Starbucks stores within Minnesota. The distribution highlights store density in the Twin Cities which is the major metropolitan area."</span></span>
+<span id="cb19-53"><a href="#cb19-53"></a></span>
+<span id="cb19-54"><a href="#cb19-54"></a><span class="co">#|fig_alt: "A point map (interactive) of Minnesota showing the locations of Starbucks stores. Densely clustered points appear in major cities, with sparser distribution in rural areas. Another key takeaway is that there are more concentrated in the Twin Cities than the rest of Minnesota. The map provides a visual representation of Starbucks' geographic presence across the state. Data is from starbucks https://mac-stat.github.io/data/starbucks.csv".</span></span>
+<span id="cb19-55"><a href="#cb19-55"></a></span>
+<span id="cb19-56"><a href="#cb19-56"></a><span class="fu">leaflet</span>(<span class="at">data =</span> starbucks_mn) <span class="sc">|&gt;</span> </span>
+<span id="cb19-57"><a href="#cb19-57"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb19-58"><a href="#cb19-58"></a>  <span class="fu">addCircles</span>(<span class="at">color =</span> <span class="fu">col2hex</span>(<span class="st">"darkgreen"</span>))</span>
+<span id="cb19-59"><a href="#cb19-59"></a><span class="in">```</span></span>
+<span id="cb19-60"><a href="#cb19-60"></a></span>
+<span id="cb19-61"><a href="#cb19-61"></a></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>
