@@ -16,8 +16,6 @@ library(viridis)
 
 ## Exercises
 
-{{< include activity-instructions.qmd >}}
-
 ### Exercise 1: `select` Practice {-}
 
 
@@ -267,10 +265,10 @@ BEFORE trying, what do you think will happen if you change the order of mutate a
 
 ```{r}
 # Now try it. Change the order of mutate and select below.
- elections_small |> 
- filter(state_name == "Delaware") |> 
- select(county_name, repub_pct_20, dem_pct_20, repub_win_20) |>
- mutate(repub_win_20 = repub_pct_20 > dem_pct_20) |> 
+ #elections_small |> 
+# filter(state_name == "Delaware") |> 
+ #select(county_name, repub_pct_20, dem_pct_20, repub_win_20) |>
+ #mutate(repub_win_20 = repub_pct_20 > dem_pct_20)
 ```
 
 
