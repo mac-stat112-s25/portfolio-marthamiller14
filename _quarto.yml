@@ -43,7 +43,7 @@ book:
       - ica/ica-reshaping.qmd
       - ica/ica-joining.qmd
       - ica/ica-factors.qmd
-      
+
 format:
   html:
     theme:
