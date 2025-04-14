@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>1&nbsp; Univariate Viz – COMP/STAT112 Notebook</title>
+<title>6&nbsp; Exam 1 – COMP/STAT112 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,8 +59,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../bw/bw-bi.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../bw/solo_project.html" rel="next">
+<link href="../bw/bw-spatial.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/bw-uni.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/exam1.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam 1</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bw/bw-uni.html" class="sidebar-item-text sidebar-link active">
+  <a href="../bw/bw-uni.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span></a>
   </div>
 </li>
@@ -182,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bw/exam1.html" class="sidebar-item-text sidebar-link">
+  <a href="../bw/exam1.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam 1</span></span></a>
   </div>
 </li>
@@ -295,9 +295,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/bw-uni.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/exam1.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam 1</span></a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">
-<span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span>
+<span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam 1</span>
 </h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -312,9 +312,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>Use this file to generate a professional looking <strong>univariate</strong> visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</header><div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidytuesdayR)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -327,67 +327,184 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span> (sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Get the Data</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">'2020-02-18'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>---- Compiling #TidyTuesday Information for 2020-02-18 ----
+--- There is 1 file available ---
+
+
+── Downloading files ───────────────────────────────────────────────────────────
+
+  1 of 1: "food_consumption.csv"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="dv">2020</span>, <span class="at">week =</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>---- Compiling #TidyTuesday Information for 2020-02-18 ----
+--- There is 1 file available ---
+
+
+── Downloading files ───────────────────────────────────────────────────────────
+
+  1 of 1: "food_consumption.csv"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>food_consumption <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>food_consumption</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">dim</span>(food_consumption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1430    4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">#nrow(food_consumption)</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="co">#ncol(food_consumption)</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">head</span>(food_consumption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  country   food_category consumption co2_emmission
+  &lt;chr&gt;     &lt;chr&gt;               &lt;dbl&gt;         &lt;dbl&gt;
+1 Argentina Pork                10.5          37.2 
+2 Argentina Poultry             38.7          41.5 
+3 Argentina Beef                55.5        1712   
+4 Argentina Lamb &amp; Goat          1.56         54.6 
+5 Argentina Fish                 4.36          6.96
+6 Argentina Eggs                11.4          10.5 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">names</span>(food_consumption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "country"       "food_category" "consumption"   "co2_emmission"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">structure</span>(food_consumption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,430 × 4
+   country   food_category            consumption co2_emmission
+   &lt;chr&gt;     &lt;chr&gt;                          &lt;dbl&gt;         &lt;dbl&gt;
+ 1 Argentina Pork                           10.5          37.2 
+ 2 Argentina Poultry                        38.7          41.5 
+ 3 Argentina Beef                           55.5        1712   
+ 4 Argentina Lamb &amp; Goat                     1.56         54.6 
+ 5 Argentina Fish                            4.36          6.96
+ 6 Argentina Eggs                           11.4          10.5 
+ 7 Argentina Milk - inc. cheese            195.          278.  
+ 8 Argentina Wheat and Wheat Products      103.           19.7 
+ 9 Argentina Rice                            8.77         11.2 
+10 Argentina Soybeans                        0             0   
+# ℹ 1,420 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">tail</span>(food_consumption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  country    food_category            consumption co2_emmission
+  &lt;chr&gt;      &lt;chr&gt;                          &lt;dbl&gt;         &lt;dbl&gt;
+1 Bangladesh Eggs                            2.08          1.91
+2 Bangladesh Milk - inc. cheese             21.9          31.2 
+3 Bangladesh Wheat and Wheat Products       17.5           3.33
+4 Bangladesh Rice                          172.          220.  
+5 Bangladesh Soybeans                        0.61          0.27
+6 Bangladesh Nuts inc. Peanut Butter         0.72          1.27</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co">#Shows first 22 rows</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">head</span>(food_consumption, <span class="dv">22</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 22 × 4
+   country   food_category            consumption co2_emmission
+   &lt;chr&gt;     &lt;chr&gt;                          &lt;dbl&gt;         &lt;dbl&gt;
+ 1 Argentina Pork                           10.5          37.2 
+ 2 Argentina Poultry                        38.7          41.5 
+ 3 Argentina Beef                           55.5        1712   
+ 4 Argentina Lamb &amp; Goat                     1.56         54.6 
+ 5 Argentina Fish                            4.36          6.96
+ 6 Argentina Eggs                           11.4          10.5 
+ 7 Argentina Milk - inc. cheese            195.          278.  
+ 8 Argentina Wheat and Wheat Products      103.           19.7 
+ 9 Argentina Rice                            8.77         11.2 
+10 Argentina Soybeans                        0             0   
+# ℹ 12 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co">#Shows last 22 rows</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">tail</span>(food_consumption, <span class="dv">22</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 22 × 4
+   country food_category            consumption co2_emmission
+   &lt;chr&gt;   &lt;chr&gt;                          &lt;dbl&gt;         &lt;dbl&gt;
+ 1 Liberia Pork                            4.01         14.2 
+ 2 Liberia Poultry                         8.91          9.57
+ 3 Liberia Beef                            0.78         24.1 
+ 4 Liberia Lamb &amp; Goat                     0.48         16.8 
+ 5 Liberia Fish                            4.13          6.59
+ 6 Liberia Eggs                            2.05          1.88
+ 7 Liberia Milk - inc. cheese              3.04          4.33
+ 8 Liberia Wheat and Wheat Products       11.0           2.09
+ 9 Liberia Rice                           94.8         121.  
+10 Liberia Soybeans                        0.63          0.28
+# ℹ 12 more rows</code></pre>
+</div>
+</div>
+<p>There are 4 variables “country” “food_category” “consumption” “co2_emmission”</p>
+<p>What does consumption of each food category in each country look like?</p>
+<p>A spacial plot wiht a map showing the size if points with the amount of condumption and the color on the points representing the food category.</p>
+<p>geom_tile = table with colors</p>
+<p>Concepts to make final viz more effective</p>
+<p>1.) labels 2.) alternate text (fig-alt) 3.) color blind friendliness (viridis_d()) 4.) text captions (fig-cap) 5.) controlling height of plot (fig-height) 6.) controlling width (fig-width)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span> (maps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">library</span>(rnaturalearthdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
-Attaching package: 'maps'
-
-The following object is masked from 'package:purrr':
-
-    map</code></pre>
+Attaching package: 'rnaturalearthdata'</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span> (RColorBrewer)</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">library</span> (gplots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'gplots'
+<pre><code>The following object is masked from 'package:rnaturalearth':
 
-The following object is masked from 'package:stats':
-
-    lowess</code></pre>
+    countries110</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">library</span>(socviz)</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">library</span> (leaflet)</span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">library</span> (devtools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: usethis</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">library</span>(viridis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: viridisLite
-
-Attaching package: 'viridis'
-
-The following object is masked from 'package:maps':
-
-    unemp</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>survey<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://hash-mac.github.io/stat112site-s25/data/survey.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#|fig-cap: "This figure shows the favorite temperature *in degrees Celcius* that students in the STATS 112 course have. The greater the frequency (y-axis) means the greater number of students that like the same temperature.""</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="co">#|fig_alt: "This visualization is of a bar graph that represents students' favorite temperature in degrees Celcius. The biggest takeaway is that students most like the temperature between `15-25 degrees. Data from class survey- https://hash-mac.github.io/stat112site-s25/data/survey.csv"</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="fu">ggplot</span>(survey, <span class="fu">aes</span>(<span class="at">x=</span>fav_temp_c,))<span class="sc">+</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">geom_bar</span>(<span class="at">alpha=</span> <span class="fl">0.75</span>, <span class="at">width=</span><span class="dv">2</span>,<span class="at">fill=</span><span class="st">"black"</span>, <span class="at">color=</span><span class="st">"white"</span>)<span class="sc">+</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Temperature (C)"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>, <span class="at">title=</span> <span class="st">"STAT 112 Students' Favorite Temperature"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: `position_stack()` requires non-overlapping x intervals.</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>world <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">"medium"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>) </span>
+<span id="cb27-2"><a href="#cb27-2"></a></span>
+<span id="cb27-3"><a href="#cb27-3"></a>world_coords <span class="ot">&lt;-</span> world <span class="sc">%&gt;%</span> </span>
+<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">select</span>(name, geometry) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-5"><a href="#cb27-5"></a>  <span class="fu">mutate</span>(<span class="at">centroid =</span> <span class="fu">st_centroid</span>(geometry),</span>
+<span id="cb27-6"><a href="#cb27-6"></a>         <span class="at">lon =</span> <span class="fu">st_coordinates</span>(centroid)[,<span class="dv">1</span>],</span>
+<span id="cb27-7"><a href="#cb27-7"></a>         <span class="at">lat =</span> <span class="fu">st_coordinates</span>(centroid)[,<span class="dv">2</span>]) <span class="sc">%&gt;%</span></span>
+<span id="cb27-8"><a href="#cb27-8"></a>  <span class="fu">select</span>(name, lon, lat)</span>
+<span id="cb27-9"><a href="#cb27-9"></a></span>
+<span id="cb27-10"><a href="#cb27-10"></a>food_map_data <span class="ot">&lt;-</span> food_consumption <span class="sc">%&gt;%</span></span>
+<span id="cb27-11"><a href="#cb27-11"></a>  <span class="fu">left_join</span>(world_coords, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"country"</span> <span class="ot">=</span> <span class="st">"name"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-12"><a href="#cb27-12"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(lon) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(lat))  </span>
+<span id="cb27-13"><a href="#cb27-13"></a></span>
+<span id="cb27-14"><a href="#cb27-14"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb27-15"><a href="#cb27-15"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> world, <span class="at">fill =</span> <span class="st">"gray90"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span>  <span class="co"># Base map</span></span>
+<span id="cb27-16"><a href="#cb27-16"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> food_map_data, </span>
+<span id="cb27-17"><a href="#cb27-17"></a>             <span class="fu">aes</span>(<span class="at">x =</span> lon, <span class="at">y =</span> lat, <span class="at">size =</span> consumption, <span class="at">color =</span> food_category),</span>
+<span id="cb27-18"><a href="#cb27-18"></a>             <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span>  </span>
+<span id="cb27-19"><a href="#cb27-19"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>)) <span class="sc">+</span>  </span>
+<span id="cb27-20"><a href="#cb27-20"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Global Food Consumption"</span>, <span class="at">subtitle =</span> <span class="st">"(Size = Consumption, Color = Food Category)"</span>, <span class="at">x =</span> <span class="st">"Longitude"</span>, <span class="at">y =</span> <span class="st">"Latitude"</span>) <span class="sc">+</span></span>
+<span id="cb27-21"><a href="#cb27-21"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="bw-uni_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="exam1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+</div>
+<p>My study sheet images are below. (I couldnt get them to upload in but I do have them done and copies saved)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co">#knitr::include_graphics("STAT112 (exam 1) study sheet pt.1.png")</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="co">#knitr::include_graphics("STAT112  (exam 1) study sheet pt.2.png")</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="co">#knitr::include_graphics("STAT112  (exam 1) study sheet pt.3.png")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -1014,48 +1131,111 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Welcome">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      <a href="../bw/bw-spatial.html" class="pagination-link" aria-label="Spatial Viz">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../bw/bw-bi.html" class="pagination-link" aria-label="Bivariate Viz">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Bivariate Viz</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../bw/solo_project.html" class="pagination-link" aria-label="Solo Project">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Solo Project</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb16" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">---</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="an">title:</span><span class="co"> "Univariate Viz"</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="co">---</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a></span>
-<span id="cb16-5"><a href="#cb16-5"></a>Use this file to generate a professional looking **univariate** visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</span>
-<span id="cb16-6"><a href="#cb16-6"></a></span>
-<span id="cb16-9"><a href="#cb16-9"></a><span class="in">```{r}</span></span>
-<span id="cb16-10"><a href="#cb16-10"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb16-11"><a href="#cb16-11"></a><span class="fu">library</span> (sf)</span>
-<span id="cb16-12"><a href="#cb16-12"></a><span class="fu">library</span> (maps)</span>
-<span id="cb16-13"><a href="#cb16-13"></a><span class="fu">library</span> (RColorBrewer)</span>
-<span id="cb16-14"><a href="#cb16-14"></a><span class="fu">library</span> (gplots)</span>
-<span id="cb16-15"><a href="#cb16-15"></a><span class="fu">library</span>(socviz)</span>
-<span id="cb16-16"><a href="#cb16-16"></a><span class="fu">library</span> (leaflet)</span>
-<span id="cb16-17"><a href="#cb16-17"></a><span class="fu">library</span> (devtools)</span>
-<span id="cb16-18"><a href="#cb16-18"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb16-19"><a href="#cb16-19"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb16-20"><a href="#cb16-20"></a><span class="in">```</span></span>
-<span id="cb16-21"><a href="#cb16-21"></a></span>
-<span id="cb16-24"><a href="#cb16-24"></a><span class="in">```{r}</span></span>
-<span id="cb16-25"><a href="#cb16-25"></a>survey<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://hash-mac.github.io/stat112site-s25/data/survey.csv"</span>)</span>
-<span id="cb16-26"><a href="#cb16-26"></a><span class="in">```</span></span>
-<span id="cb16-27"><a href="#cb16-27"></a></span>
-<span id="cb16-30"><a href="#cb16-30"></a><span class="in">```{r}</span></span>
-<span id="cb16-31"><a href="#cb16-31"></a><span class="co">#|fig-cap: "This figure shows the favorite temperature *in degrees Celcius* that students in the STATS 112 course have. The greater the frequency (y-axis) means the greater number of students that like the same temperature.""</span></span>
-<span id="cb16-32"><a href="#cb16-32"></a></span>
-<span id="cb16-33"><a href="#cb16-33"></a><span class="co">#|fig_alt: "This visualization is of a bar graph that represents students' favorite temperature in degrees Celcius. The biggest takeaway is that students most like the temperature between `15-25 degrees. Data from class survey- https://hash-mac.github.io/stat112site-s25/data/survey.csv"</span></span>
-<span id="cb16-34"><a href="#cb16-34"></a></span>
-<span id="cb16-35"><a href="#cb16-35"></a><span class="fu">ggplot</span>(survey, <span class="fu">aes</span>(<span class="at">x=</span>fav_temp_c,))<span class="sc">+</span></span>
-<span id="cb16-36"><a href="#cb16-36"></a>  <span class="fu">geom_bar</span>(<span class="at">alpha=</span> <span class="fl">0.75</span>, <span class="at">width=</span><span class="dv">2</span>,<span class="at">fill=</span><span class="st">"black"</span>, <span class="at">color=</span><span class="st">"white"</span>)<span class="sc">+</span></span>
-<span id="cb16-37"><a href="#cb16-37"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Temperature (C)"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>, <span class="at">title=</span> <span class="st">"STAT 112 Students' Favorite Temperature"</span>)</span>
-<span id="cb16-38"><a href="#cb16-38"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb29" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1"></a><span class="co">---</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="an">title:</span><span class="co"> "Exam 1"</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="co">---</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a></span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="in">```{r}</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a><span class="fu">library</span>(tidytuesdayR)</span>
+<span id="cb29-10"><a href="#cb29-10"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb29-11"><a href="#cb29-11"></a><span class="in">```</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a></span>
+<span id="cb29-15"><a href="#cb29-15"></a><span class="in">```{r}</span></span>
+<span id="cb29-16"><a href="#cb29-16"></a><span class="co"># Get the Data</span></span>
+<span id="cb29-17"><a href="#cb29-17"></a></span>
+<span id="cb29-18"><a href="#cb29-18"></a></span>
+<span id="cb29-19"><a href="#cb29-19"></a></span>
+<span id="cb29-20"><a href="#cb29-20"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">'2020-02-18'</span>)</span>
+<span id="cb29-21"><a href="#cb29-21"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="dv">2020</span>, <span class="at">week =</span> <span class="dv">8</span>)</span>
+<span id="cb29-22"><a href="#cb29-22"></a></span>
+<span id="cb29-23"><a href="#cb29-23"></a></span>
+<span id="cb29-24"><a href="#cb29-24"></a>food_consumption <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>food_consumption</span>
+<span id="cb29-25"><a href="#cb29-25"></a><span class="in">```</span></span>
+<span id="cb29-26"><a href="#cb29-26"></a></span>
+<span id="cb29-29"><a href="#cb29-29"></a><span class="in">```{r}</span></span>
+<span id="cb29-30"><a href="#cb29-30"></a><span class="fu">dim</span>(food_consumption)</span>
+<span id="cb29-31"><a href="#cb29-31"></a><span class="co">#nrow(food_consumption)</span></span>
+<span id="cb29-32"><a href="#cb29-32"></a><span class="co">#ncol(food_consumption)</span></span>
+<span id="cb29-33"><a href="#cb29-33"></a><span class="fu">head</span>(food_consumption)</span>
+<span id="cb29-34"><a href="#cb29-34"></a><span class="fu">names</span>(food_consumption)</span>
+<span id="cb29-35"><a href="#cb29-35"></a><span class="fu">structure</span>(food_consumption)</span>
+<span id="cb29-36"><a href="#cb29-36"></a><span class="fu">tail</span>(food_consumption)</span>
+<span id="cb29-37"><a href="#cb29-37"></a><span class="in">```</span></span>
+<span id="cb29-38"><a href="#cb29-38"></a></span>
+<span id="cb29-41"><a href="#cb29-41"></a><span class="in">```{r}</span></span>
+<span id="cb29-42"><a href="#cb29-42"></a><span class="co">#Shows first 22 rows</span></span>
+<span id="cb29-43"><a href="#cb29-43"></a><span class="fu">head</span>(food_consumption, <span class="dv">22</span>)</span>
+<span id="cb29-44"><a href="#cb29-44"></a><span class="in">```</span></span>
+<span id="cb29-45"><a href="#cb29-45"></a></span>
+<span id="cb29-48"><a href="#cb29-48"></a><span class="in">```{r}</span></span>
+<span id="cb29-49"><a href="#cb29-49"></a><span class="co">#Shows last 22 rows</span></span>
+<span id="cb29-50"><a href="#cb29-50"></a><span class="fu">tail</span>(food_consumption, <span class="dv">22</span>)</span>
+<span id="cb29-51"><a href="#cb29-51"></a><span class="in">```</span></span>
+<span id="cb29-52"><a href="#cb29-52"></a></span>
+<span id="cb29-53"><a href="#cb29-53"></a>There are 4 variables "country" "food_category" "consumption" "co2_emmission"</span>
+<span id="cb29-54"><a href="#cb29-54"></a></span>
+<span id="cb29-55"><a href="#cb29-55"></a>What does consumption of each food category in each country look like?</span>
+<span id="cb29-56"><a href="#cb29-56"></a></span>
+<span id="cb29-57"><a href="#cb29-57"></a>A spacial plot wiht a map showing the size if points with the amount of condumption and the color on the points representing the food category.</span>
+<span id="cb29-58"><a href="#cb29-58"></a></span>
+<span id="cb29-59"><a href="#cb29-59"></a>geom_tile = table with colors</span>
+<span id="cb29-60"><a href="#cb29-60"></a></span>
+<span id="cb29-61"><a href="#cb29-61"></a>Concepts to make final viz more effective</span>
+<span id="cb29-62"><a href="#cb29-62"></a></span>
+<span id="cb29-63"><a href="#cb29-63"></a>1.) labels 2.) alternate text (fig-alt) 3.) color blind friendliness (viridis_d()) 4.) text captions (fig-cap) 5.) controlling height of plot (fig-height) 6.) controlling width (fig-width)</span>
+<span id="cb29-64"><a href="#cb29-64"></a></span>
+<span id="cb29-67"><a href="#cb29-67"></a><span class="in">```{r}</span></span>
+<span id="cb29-68"><a href="#cb29-68"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb29-69"><a href="#cb29-69"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb29-70"><a href="#cb29-70"></a><span class="fu">library</span>(sf)</span>
+<span id="cb29-71"><a href="#cb29-71"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb29-72"><a href="#cb29-72"></a><span class="fu">library</span>(rnaturalearthdata)</span>
+<span id="cb29-73"><a href="#cb29-73"></a></span>
+<span id="cb29-74"><a href="#cb29-74"></a>world <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">"medium"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>) </span>
+<span id="cb29-75"><a href="#cb29-75"></a></span>
+<span id="cb29-76"><a href="#cb29-76"></a>world_coords <span class="ot">&lt;-</span> world <span class="sc">%&gt;%</span> </span>
+<span id="cb29-77"><a href="#cb29-77"></a>  <span class="fu">select</span>(name, geometry) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-78"><a href="#cb29-78"></a>  <span class="fu">mutate</span>(<span class="at">centroid =</span> <span class="fu">st_centroid</span>(geometry),</span>
+<span id="cb29-79"><a href="#cb29-79"></a>         <span class="at">lon =</span> <span class="fu">st_coordinates</span>(centroid)[,<span class="dv">1</span>],</span>
+<span id="cb29-80"><a href="#cb29-80"></a>         <span class="at">lat =</span> <span class="fu">st_coordinates</span>(centroid)[,<span class="dv">2</span>]) <span class="sc">%&gt;%</span></span>
+<span id="cb29-81"><a href="#cb29-81"></a>  <span class="fu">select</span>(name, lon, lat)</span>
+<span id="cb29-82"><a href="#cb29-82"></a></span>
+<span id="cb29-83"><a href="#cb29-83"></a>food_map_data <span class="ot">&lt;-</span> food_consumption <span class="sc">%&gt;%</span></span>
+<span id="cb29-84"><a href="#cb29-84"></a>  <span class="fu">left_join</span>(world_coords, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"country"</span> <span class="ot">=</span> <span class="st">"name"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-85"><a href="#cb29-85"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(lon) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(lat))  </span>
+<span id="cb29-86"><a href="#cb29-86"></a></span>
+<span id="cb29-87"><a href="#cb29-87"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb29-88"><a href="#cb29-88"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> world, <span class="at">fill =</span> <span class="st">"gray90"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span>  <span class="co"># Base map</span></span>
+<span id="cb29-89"><a href="#cb29-89"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> food_map_data, </span>
+<span id="cb29-90"><a href="#cb29-90"></a>             <span class="fu">aes</span>(<span class="at">x =</span> lon, <span class="at">y =</span> lat, <span class="at">size =</span> consumption, <span class="at">color =</span> food_category),</span>
+<span id="cb29-91"><a href="#cb29-91"></a>             <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span>  </span>
+<span id="cb29-92"><a href="#cb29-92"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>)) <span class="sc">+</span>  </span>
+<span id="cb29-93"><a href="#cb29-93"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Global Food Consumption"</span>, <span class="at">subtitle =</span> <span class="st">"(Size = Consumption, Color = Food Category)"</span>, <span class="at">x =</span> <span class="st">"Longitude"</span>, <span class="at">y =</span> <span class="st">"Latitude"</span>) <span class="sc">+</span></span>
+<span id="cb29-94"><a href="#cb29-94"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb29-95"><a href="#cb29-95"></a>  </span>
+<span id="cb29-96"><a href="#cb29-96"></a><span class="in">```</span></span>
+<span id="cb29-97"><a href="#cb29-97"></a></span>
+<span id="cb29-98"><a href="#cb29-98"></a>My study sheet images are below.</span>
+<span id="cb29-99"><a href="#cb29-99"></a>(I couldnt get them to upload in but I do have them done and copies saved)</span>
+<span id="cb29-100"><a href="#cb29-100"></a></span>
+<span id="cb29-103"><a href="#cb29-103"></a><span class="in">```{r}</span></span>
+<span id="cb29-104"><a href="#cb29-104"></a><span class="co">#knitr::include_graphics("STAT112 (exam 1) study sheet pt.1.png")</span></span>
+<span id="cb29-105"><a href="#cb29-105"></a><span class="co">#knitr::include_graphics("STAT112  (exam 1) study sheet pt.2.png")</span></span>
+<span id="cb29-106"><a href="#cb29-106"></a><span class="co">#knitr::include_graphics("STAT112  (exam 1) study sheet pt.3.png")</span></span>
+<span id="cb29-107"><a href="#cb29-107"></a></span>
+<span id="cb29-108"><a href="#cb29-108"></a></span>
+<span id="cb29-109"><a href="#cb29-109"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

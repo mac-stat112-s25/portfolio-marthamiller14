@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>1&nbsp; Univariate Viz – COMP/STAT112 Notebook</title>
+<title>17&nbsp; Factors – COMP/STAT112 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,8 +59,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../bw/bw-bi.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../ica/ica-strings.html" rel="next">
+<link href="../ica/ica-joining.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/bw-uni.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/ica-uni.html">In-class Activities</a></li><li class="breadcrumb-item"><a href="../ica/ica-factors.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Factors</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bw/bw-uni.html" class="sidebar-item-text sidebar-link active">
+  <a href="../bw/bw-uni.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span></a>
   </div>
 </li>
@@ -259,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ica/ica-factors.html" class="sidebar-item-text sidebar-link">
+  <a href="../ica/ica-factors.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Factors</span></span></a>
   </div>
 </li>
@@ -291,13 +291,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li>
+<a href="#exercises" id="toc-exercises" class="nav-link active" data-scroll-target="#exercises"><span class="header-section-number">17.1</span> Exercises</a>
+  <ul class="collapse">
+<li><a href="#exercise-1-changing-order" id="toc-exercise-1-changing-order" class="nav-link" data-scroll-target="#exercise-1-changing-order">Exercise 1: Changing Order</a></li>
+  <li><a href="#exercise-2-changing-factor-level-labels" id="toc-exercise-2-changing-factor-level-labels" class="nav-link" data-scroll-target="#exercise-2-changing-factor-level-labels">Exercise 2: Changing Factor Level Labels</a></li>
+  </ul>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/bw-uni.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/ica-uni.html">In-class Activities</a></li><li class="breadcrumb-item"><a href="../ica/ica-factors.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Factors</span></a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">
-<span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span>
+<span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Factors</span>
 </h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -312,89 +322,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>Use this file to generate a professional looking <strong>univariate</strong> visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</p>
+</header><section id="exercises" class="level2" data-number="17.1"><h2 data-number="17.1" class="anchored" data-anchor-id="exercises">
+<span class="header-section-number">17.1</span> Exercises</h2>
+<p>The exercises revisit our <code>grades</code> data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Get rid of some duplicate rows!</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co">#grades &lt;- read.csv("https://mac-stat.github.io/data/grades.csv") |&gt; </span></span>
+<span id="cb1-3"><a href="#cb1-3"></a> <span class="co">#distinct(sid, sessionID, .keep_all = TRUE)</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Check it out</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co">#head(grades)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span> (sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span> (maps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'maps'
-
-The following object is masked from 'package:purrr':
-
-    map</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span> (RColorBrewer)</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">library</span> (gplots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'gplots'
-
-The following object is masked from 'package:stats':
-
-    lowess</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">library</span>(socviz)</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">library</span> (leaflet)</span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">library</span> (devtools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: usethis</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">library</span>(viridis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: viridisLite
-
-Attaching package: 'viridis'
-
-The following object is masked from 'package:maps':
-
-    unemp</code></pre>
-</div>
-</div>
+<p>We’ll explore the number of times each grade was assigned:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>survey<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://hash-mac.github.io/stat112site-s25/data/survey.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#grade_distribution &lt;- grades |&gt; </span></span>
+<span id="cb2-2"><a href="#cb2-2"></a> <span class="co"># count(grade)</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#head(grade_distribution)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="exercise-1-changing-order" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-1-changing-order">Exercise 1: Changing Order</h3>
+<p>Check out a <strong>column plot</strong> of the number of times each grade was assigned during the study period. This is similar to a bar plot, but where we define the height of a bar according to variable in our dataset.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#|fig-cap: "This figure shows the favorite temperature *in degrees Celcius* that students in the STATS 112 course have. The greater the frequency (y-axis) means the greater number of students that like the same temperature.""</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="co">#|fig_alt: "This visualization is of a bar graph that represents students' favorite temperature in degrees Celcius. The biggest takeaway is that students most like the temperature between `15-25 degrees. Data from class survey- https://hash-mac.github.io/stat112site-s25/data/survey.csv"</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="fu">ggplot</span>(survey, <span class="fu">aes</span>(<span class="at">x=</span>fav_temp_c,))<span class="sc">+</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">geom_bar</span>(<span class="at">alpha=</span> <span class="fl">0.75</span>, <span class="at">width=</span><span class="dv">2</span>,<span class="at">fill=</span><span class="st">"black"</span>, <span class="at">color=</span><span class="st">"white"</span>)<span class="sc">+</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Temperature (C)"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>, <span class="at">title=</span> <span class="st">"STAT 112 Students' Favorite Temperature"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: `position_stack()` requires non-overlapping x intervals.</code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#grade_distribution |&gt; </span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="co">#ggplot(aes(x = grade, y = n)) +</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>    <span class="co">#geom_col()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="bw-uni_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<p>The order of the grades is goofy! Construct a new column plot, manually reordering the grades from high (A) to low (NC) with “S” and “AU” at the end:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#grade_distribution |&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a> <span class="co"># mutate(grade = fct_relevel(grade, c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC", "S", "AU"))) |&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a> <span class="co"># ggplot(aes(x = grade, y = n)) +</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>   <span class="co"># geom_col()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Construct a new column plot, reordering the grades in ascending frequency (i.e.&nbsp;how often the grades were assigned):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># grade_distribution |&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>   <span class="co">#mutate(grade = fct_reorder(grade, n)) |&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>   <span class="co">#ggplot(aes(x = grade, y = n)) +</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>     <span class="co">#geom_col()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Construct a new column plot, reordering the grades in descending frequency (i.e.&nbsp;how often the grades were assigned):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># grade_distribution |&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a> <span class="co"># mutate(grade = fct_reorder(grade, n, .desc = TRUE)) |&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a> <span class="co"># ggplot(aes(x = grade, y = n)) +</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a> <span class="co">#   geom_col()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="exercise-2-changing-factor-level-labels" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-2-changing-factor-level-labels">Exercise 2: Changing Factor Level Labels</h3>
+<p>It may not be clear what “AU” and “S” stand for. Construct a new column plot that renames these levels “Audit” and “Satisfactory”, while keeping the other grade labels the same <em>and</em> in a meaningful order:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a> <span class="co">#grade_distribution |&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="co"># mutate(grade = fct_relevel(grade, c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC", "S", "AU"))) |&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="co"># mutate(grade = fct_recode(grade, "Satisfactory" = "S", "Audit" = "AU")) |&gt;  # Multiple pieces go into the last 2 blanks</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a> <span class="co"># ggplot(aes(x = grade, y = n)) +</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>   <span class="co"># geom_col()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
 <!-- -->
 
-
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1014,48 +1001,95 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Welcome">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      <a href="../ica/ica-joining.html" class="pagination-link" aria-label="Joining">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Joining</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../bw/bw-bi.html" class="pagination-link" aria-label="Bivariate Viz">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Bivariate Viz</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../ica/ica-strings.html" class="pagination-link" aria-label="Strings">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Strings</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb16" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">---</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="an">title:</span><span class="co"> "Univariate Viz"</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="co">---</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a></span>
-<span id="cb16-5"><a href="#cb16-5"></a>Use this file to generate a professional looking **univariate** visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</span>
-<span id="cb16-6"><a href="#cb16-6"></a></span>
-<span id="cb16-9"><a href="#cb16-9"></a><span class="in">```{r}</span></span>
-<span id="cb16-10"><a href="#cb16-10"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb16-11"><a href="#cb16-11"></a><span class="fu">library</span> (sf)</span>
-<span id="cb16-12"><a href="#cb16-12"></a><span class="fu">library</span> (maps)</span>
-<span id="cb16-13"><a href="#cb16-13"></a><span class="fu">library</span> (RColorBrewer)</span>
-<span id="cb16-14"><a href="#cb16-14"></a><span class="fu">library</span> (gplots)</span>
-<span id="cb16-15"><a href="#cb16-15"></a><span class="fu">library</span>(socviz)</span>
-<span id="cb16-16"><a href="#cb16-16"></a><span class="fu">library</span> (leaflet)</span>
-<span id="cb16-17"><a href="#cb16-17"></a><span class="fu">library</span> (devtools)</span>
-<span id="cb16-18"><a href="#cb16-18"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb16-19"><a href="#cb16-19"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb16-20"><a href="#cb16-20"></a><span class="in">```</span></span>
-<span id="cb16-21"><a href="#cb16-21"></a></span>
-<span id="cb16-24"><a href="#cb16-24"></a><span class="in">```{r}</span></span>
-<span id="cb16-25"><a href="#cb16-25"></a>survey<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://hash-mac.github.io/stat112site-s25/data/survey.csv"</span>)</span>
-<span id="cb16-26"><a href="#cb16-26"></a><span class="in">```</span></span>
-<span id="cb16-27"><a href="#cb16-27"></a></span>
-<span id="cb16-30"><a href="#cb16-30"></a><span class="in">```{r}</span></span>
-<span id="cb16-31"><a href="#cb16-31"></a><span class="co">#|fig-cap: "This figure shows the favorite temperature *in degrees Celcius* that students in the STATS 112 course have. The greater the frequency (y-axis) means the greater number of students that like the same temperature.""</span></span>
-<span id="cb16-32"><a href="#cb16-32"></a></span>
-<span id="cb16-33"><a href="#cb16-33"></a><span class="co">#|fig_alt: "This visualization is of a bar graph that represents students' favorite temperature in degrees Celcius. The biggest takeaway is that students most like the temperature between `15-25 degrees. Data from class survey- https://hash-mac.github.io/stat112site-s25/data/survey.csv"</span></span>
-<span id="cb16-34"><a href="#cb16-34"></a></span>
-<span id="cb16-35"><a href="#cb16-35"></a><span class="fu">ggplot</span>(survey, <span class="fu">aes</span>(<span class="at">x=</span>fav_temp_c,))<span class="sc">+</span></span>
-<span id="cb16-36"><a href="#cb16-36"></a>  <span class="fu">geom_bar</span>(<span class="at">alpha=</span> <span class="fl">0.75</span>, <span class="at">width=</span><span class="dv">2</span>,<span class="at">fill=</span><span class="st">"black"</span>, <span class="at">color=</span><span class="st">"white"</span>)<span class="sc">+</span></span>
-<span id="cb16-37"><a href="#cb16-37"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Temperature (C)"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>, <span class="at">title=</span> <span class="st">"STAT 112 Students' Favorite Temperature"</span>)</span>
-<span id="cb16-38"><a href="#cb16-38"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">---</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="an">title:</span><span class="co"> "Factors"</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co">---</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="fu">## Exercises</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a></span>
+<span id="cb8-8"><a href="#cb8-8"></a>The exercises revisit our <span class="in">`grades`</span> data:</span>
+<span id="cb8-9"><a href="#cb8-9"></a></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="in">```{r}</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="co"># Get rid of some duplicate rows!</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="co">#grades &lt;- read.csv("https://mac-stat.github.io/data/grades.csv") |&gt; </span></span>
+<span id="cb8-15"><a href="#cb8-15"></a> <span class="co">#distinct(sid, sessionID, .keep_all = TRUE)</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a></span>
+<span id="cb8-17"><a href="#cb8-17"></a><span class="co"># Check it out</span></span>
+<span id="cb8-18"><a href="#cb8-18"></a><span class="co">#head(grades)</span></span>
+<span id="cb8-19"><a href="#cb8-19"></a><span class="in">```</span></span>
+<span id="cb8-20"><a href="#cb8-20"></a></span>
+<span id="cb8-21"><a href="#cb8-21"></a>We'll explore the number of times each grade was assigned:</span>
+<span id="cb8-22"><a href="#cb8-22"></a></span>
+<span id="cb8-25"><a href="#cb8-25"></a><span class="in">```{r}</span></span>
+<span id="cb8-26"><a href="#cb8-26"></a><span class="co">#grade_distribution &lt;- grades |&gt; </span></span>
+<span id="cb8-27"><a href="#cb8-27"></a> <span class="co"># count(grade)</span></span>
+<span id="cb8-28"><a href="#cb8-28"></a></span>
+<span id="cb8-29"><a href="#cb8-29"></a><span class="co">#head(grade_distribution)</span></span>
+<span id="cb8-30"><a href="#cb8-30"></a><span class="in">```</span></span>
+<span id="cb8-31"><a href="#cb8-31"></a></span>
+<span id="cb8-32"><a href="#cb8-32"></a><span class="fu">### Exercise 1: Changing Order {.unnumbered}</span></span>
+<span id="cb8-33"><a href="#cb8-33"></a></span>
+<span id="cb8-34"><a href="#cb8-34"></a>Check out a **column plot** of the number of times each grade was assigned during the study period.</span>
+<span id="cb8-35"><a href="#cb8-35"></a>This is similar to a bar plot, but where we define the height of a bar according to variable in our dataset.</span>
+<span id="cb8-36"><a href="#cb8-36"></a></span>
+<span id="cb8-39"><a href="#cb8-39"></a><span class="in">```{r}</span></span>
+<span id="cb8-40"><a href="#cb8-40"></a><span class="co">#grade_distribution |&gt; </span></span>
+<span id="cb8-41"><a href="#cb8-41"></a>  <span class="co">#ggplot(aes(x = grade, y = n)) +</span></span>
+<span id="cb8-42"><a href="#cb8-42"></a>    <span class="co">#geom_col()</span></span>
+<span id="cb8-43"><a href="#cb8-43"></a><span class="in">```</span></span>
+<span id="cb8-44"><a href="#cb8-44"></a></span>
+<span id="cb8-45"><a href="#cb8-45"></a>The order of the grades is goofy!</span>
+<span id="cb8-46"><a href="#cb8-46"></a>Construct a new column plot, manually reordering the grades from high (A) to low (NC) with "S" and "AU" at the end:</span>
+<span id="cb8-47"><a href="#cb8-47"></a></span>
+<span id="cb8-50"><a href="#cb8-50"></a><span class="in">```{r}</span></span>
+<span id="cb8-51"><a href="#cb8-51"></a><span class="co">#grade_distribution |&gt;</span></span>
+<span id="cb8-52"><a href="#cb8-52"></a> <span class="co"># mutate(grade = fct_relevel(grade, c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC", "S", "AU"))) |&gt;</span></span>
+<span id="cb8-53"><a href="#cb8-53"></a> <span class="co"># ggplot(aes(x = grade, y = n)) +</span></span>
+<span id="cb8-54"><a href="#cb8-54"></a>   <span class="co"># geom_col()</span></span>
+<span id="cb8-55"><a href="#cb8-55"></a><span class="in">```</span></span>
+<span id="cb8-56"><a href="#cb8-56"></a></span>
+<span id="cb8-57"><a href="#cb8-57"></a>Construct a new column plot, reordering the grades in ascending frequency (i.e. how often the grades were assigned):</span>
+<span id="cb8-58"><a href="#cb8-58"></a></span>
+<span id="cb8-61"><a href="#cb8-61"></a><span class="in">```{r}</span></span>
+<span id="cb8-62"><a href="#cb8-62"></a><span class="co"># grade_distribution |&gt;</span></span>
+<span id="cb8-63"><a href="#cb8-63"></a>   <span class="co">#mutate(grade = fct_reorder(grade, n)) |&gt;</span></span>
+<span id="cb8-64"><a href="#cb8-64"></a>   <span class="co">#ggplot(aes(x = grade, y = n)) +</span></span>
+<span id="cb8-65"><a href="#cb8-65"></a>     <span class="co">#geom_col()</span></span>
+<span id="cb8-66"><a href="#cb8-66"></a></span>
+<span id="cb8-67"><a href="#cb8-67"></a><span class="in">```</span></span>
+<span id="cb8-68"><a href="#cb8-68"></a></span>
+<span id="cb8-69"><a href="#cb8-69"></a>Construct a new column plot, reordering the grades in descending frequency (i.e. how often the grades were assigned):</span>
+<span id="cb8-70"><a href="#cb8-70"></a></span>
+<span id="cb8-73"><a href="#cb8-73"></a><span class="in">```{r}</span></span>
+<span id="cb8-74"><a href="#cb8-74"></a><span class="co"># grade_distribution |&gt;</span></span>
+<span id="cb8-75"><a href="#cb8-75"></a> <span class="co"># mutate(grade = fct_reorder(grade, n, .desc = TRUE)) |&gt;</span></span>
+<span id="cb8-76"><a href="#cb8-76"></a> <span class="co"># ggplot(aes(x = grade, y = n)) +</span></span>
+<span id="cb8-77"><a href="#cb8-77"></a> <span class="co">#   geom_col()</span></span>
+<span id="cb8-78"><a href="#cb8-78"></a><span class="in">```</span></span>
+<span id="cb8-79"><a href="#cb8-79"></a></span>
+<span id="cb8-80"><a href="#cb8-80"></a><span class="fu">### Exercise 2: Changing Factor Level Labels {.unnumbered}</span></span>
+<span id="cb8-81"><a href="#cb8-81"></a></span>
+<span id="cb8-82"><a href="#cb8-82"></a>It may not be clear what "AU" and "S" stand for.</span>
+<span id="cb8-83"><a href="#cb8-83"></a>Construct a new column plot that renames these levels "Audit" and "Satisfactory", while keeping the other grade labels the same *and* in a meaningful order:</span>
+<span id="cb8-84"><a href="#cb8-84"></a></span>
+<span id="cb8-87"><a href="#cb8-87"></a><span class="in">```{r}</span></span>
+<span id="cb8-88"><a href="#cb8-88"></a> <span class="co">#grade_distribution |&gt;</span></span>
+<span id="cb8-89"><a href="#cb8-89"></a>  <span class="co"># mutate(grade = fct_relevel(grade, c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC", "S", "AU"))) |&gt;</span></span>
+<span id="cb8-90"><a href="#cb8-90"></a>  <span class="co"># mutate(grade = fct_recode(grade, "Satisfactory" = "S", "Audit" = "AU")) |&gt;  # Multiple pieces go into the last 2 blanks</span></span>
+<span id="cb8-91"><a href="#cb8-91"></a> <span class="co"># ggplot(aes(x = grade, y = n)) +</span></span>
+<span id="cb8-92"><a href="#cb8-92"></a>   <span class="co"># geom_col()</span></span>
+<span id="cb8-93"><a href="#cb8-93"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
