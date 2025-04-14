@@ -44,7 +44,9 @@ head(fcc,11)
 #print(cc)
 ```
 ```{r}
+#|fig_cap: "Faceted maps showing global food consumption by each category of food. There are 11 categories of food. It shows that the milk and cheese category has byfar the most consumed. "
 
+#|fig_alt: "A facet wrapped map showing global food consumption. Maps are faceted by each food category on a map showing the world. Lighter areas on the map represent a greater kg/person/year for each food category. Data is "food_consumption.csv".
 
 world <- ne_countries(scale = "medium", returnclass = "sf")
 
