@@ -2,6 +2,7 @@
 title: "Wrangling"
 editor: visual
 ---
+
 ```{r}
 library(tidyverse)
 library (sf)
@@ -16,8 +17,7 @@ library(viridis)
 
 ## Exercises
 
-### Exercise 1: `select` Practice {-}
-
+### Exercise 1: `select` Practice {.unnumbered}
 
 Use `select()` to create a simplified dataset that we'll use throughout the exercises below.
 
@@ -28,7 +28,6 @@ Use `select()` to create a simplified dataset that we'll use throughout the exer
 elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
 ```
 
-
 ```{r}
 elections_small <- elections |>
   select(state_name, county_name, total_votes_20, repub_pct_20, dem_pct_20, total_votes_16, dem_pct_16)
@@ -37,11 +36,10 @@ elections_small <- elections |>
 head(elections_small)
 ```
 
+### Exercise 2: `filter` Demo {.unnumbered}
 
-
-### Exercise 2: `filter` Demo {-}
-
-Whereas `select()` selects certain *variables* or columns, `filter()` keeps certain *units of observation* or rows relative to their outcome on certain variables. To this end, we must:
+Whereas `select()` selects certain *variables* or columns, `filter()` keeps certain *units of observation* or rows relative to their outcome on certain variables.
+To this end, we must:
 
 -   Identify the variable(s) that are relevant to the filter.
 
@@ -59,15 +57,9 @@ Whereas `select()` selects certain *variables* or columns, `filter()` keeps cert
 
 -   Use quotes `""` when specifying outcomes of interest for a categorical variable.
 
-
-
 ::: {.callout-tip title="Commenting/Uncommenting Code"}
-
 To comment/uncomment several lines of code at once, highlight them then click <kbd>ctrl/cmd+shift+c</kbd>.
-
 :::
-
-
 
 ```{r}
 # Keep only data on counties in Hawaii
@@ -80,7 +72,8 @@ To comment/uncomment several lines of code at once, highlight them then click <k
  elections_small |> 
    filter(state_name %in% c("Hawaii", "Delaware"))
 ```
-Data for Hawaii and Delaware. 
+
+Data for Hawaii and Delaware.
 
 ```{r}
 # Keep only data on counties where the Republican got MORE THAN 93.97% of the vote in 2020
@@ -98,7 +91,8 @@ elections_small |>
 
 ```
 
-We can also filter with respect to 2 rules! Here, think what variables are relevant.
+We can also filter with respect to 2 rules!
+Here, think what variables are relevant.
 
 ```{r}
 # Keep only data on counties in Texas where the Democrat got more than 65% of the vote in 2020
@@ -113,10 +107,7 @@ elections_small |>
   filter(state_name %in% c("Texas"),dem_pct_20 > 65)
 ```
 
-
-
-### Exercise 3: `arrange` Demo {-}
-
+### Exercise 3: `arrange` Demo {.unnumbered}
 
 `arrange()` arranges or sorts the *rows* in a dataset according to a given column or variable, in ascending or descending order:
 
@@ -138,14 +129,11 @@ elections_small |>
   head()
 ```
 
-
-
-### Exercise 4: `mutate` Demo {-}
-
+### Exercise 4: `mutate` Demo {.unnumbered}
 
 `mutate()` can either transform / mutate an existing variable (column), or define a new variable based on existing ones.
 
-#### Part a {-}
+#### Part a {.unnumbered}
 
 ```{r}
 # What did this code do?
@@ -154,7 +142,6 @@ elections_small |>
    mutate(diff_20 = repub_pct_20 - dem_pct_20) |> 
    head()
 ```
-
 
 ```{r}
 # What did this code do?
@@ -172,7 +159,7 @@ elections_small |>
    head()
 ```
 
-#### Part b {-}
+#### Part b {.unnumbered}
 
 ```{r}
 # You try
@@ -190,19 +177,17 @@ elections_small |>
   head()
 ```
 
-
-
-### Exercise 5: Pipe Series {-}
+### Exercise 5: Pipe Series {.unnumbered}
 
 Let's now combine these verbs into a pipe series!
 
-#### Part a {-}
+#### Part a {.unnumbered}
 
 ::: {.callout-important title="Think then Run"}
-
 BEFORE running the below chunk, what do you think it will produce?
- 
-I think it will show the results from Wisconsin in 2020 in what county the democratic votes are greater than the republican. The order will be in counties with the greatest number of total votes to the least.
+
+I think it will show the results from Wisconsin in 2020 in what county the democratic votes are greater than the republican.
+The order will be in counties with the greatest number of total votes to the least.
 :::
 
 ```{r}
@@ -213,15 +198,12 @@ I think it will show the results from Wisconsin in 2020 in what county the democ
    head()
 ```
 
-#### Part b {-}
+#### Part b {.unnumbered}
 
 ::: {.callout-important title="Think then Run"}
-
 BEFORE trying, what do you think will happen if you change the order of filter and arrange:
 
 -   the results will be the same
-
-
 :::
 
 ```{r}
@@ -232,18 +214,18 @@ BEFORE trying, what do you think will happen if you change the order of filter a
    head()
 ```
 
-#### Part c {-}
+#### Part c {.unnumbered}
 
-So the order of `filter()` and `arrange()` did *not* matter -- rerranging them produces the same results. BUT what is one *advantage* of filtering before arranging?'
-When reading back the code we can see which variables were being looked at before they we arranged. 
+So the order of `filter()` and `arrange()` did *not* matter -- rerranging them produces the same results.
+BUT what is one *advantage* of filtering before arranging?'
+When reading back the code we can see which variables were being looked at before they we arranged.
 
-#### Part d {-}
+#### Part d {.unnumbered}
 
 ::: {.callout-important title="Think then Run"}
-
 BEFORE running the below chunk, what do you think it will produce?
 
-I think it was show the results from Delaware if the republican candidate won in 2020 along with the overall republican and democratic values. 
+I think it was show the results from Delaware if the republican candidate won in 2020 along with the overall republican and democratic values.
 :::
 
 ```{r}
@@ -253,14 +235,12 @@ I think it was show the results from Delaware if the republican candidate won in
    select(county_name, repub_pct_20, dem_pct_20, repub_win_20)
 ```
 
-#### Part e {-}
+#### Part e {.unnumbered}
 
 ::: {.callout-important title="Think then Run"}
-
 BEFORE trying, what do you think will happen if you change the order of mutate and select:
 
-2.   we'll get an error
-
+2.  we'll get an error
 :::
 
 ```{r}
@@ -271,18 +251,18 @@ BEFORE trying, what do you think will happen if you change the order of mutate a
  #mutate(repub_win_20 = repub_pct_20 > dem_pct_20)
 ```
 
+### Exercise 6: DIY Pipe Series {.unnumbered}
 
-
-### Exercise 6: DIY Pipe Series {-}
-
-We've now learned 4 of the 6 wrangling verbs: `select`, `filter`, `mutate`, `arrange.` Let's practice combining these into pipe series. Here are some hot tips:
+We've now learned 4 of the 6 wrangling verbs: `select`, `filter`, `mutate`, `arrange.` Let's practice combining these into pipe series.
+Here are some hot tips:
 
 -   Before writing any code, translate the prompt: how many distinct wrangling steps are needed and what verb do we need in each step?
 -   Add each verb one at a time -- don't try writing a whole chunk at once.
 
-#### Part a {-}
+#### Part a {.unnumbered}
 
-Show just the counties in Minnesota and their Democratic 2020 vote percentage, from highest to lowest. Your answer should have just 2 columns.
+Show just the counties in Minnesota and their Democratic 2020 vote percentage, from highest to lowest.
+Your answer should have just 2 columns.
 
 ```{r}
 elections_small |>
@@ -291,9 +271,10 @@ elections_small |>
   arrange(desc(dem_pct_20))
 ```
 
-#### Part b {-}
+#### Part b {.unnumbered}
 
-Create a new dataset named `mn_wi` that sorts the counties in Minnesota and Wisconsin from lowest to highest in terms of the *change* in Democratic vote percentage in 2020 vs 2016. This dataset should include the following variables (and only these variables): `state_name`, `county_name`, `dem_pct_20`, `dem_pct_20`, and a variable measuring the change in Democratic vote percentage in 2020 vs 2016.
+Create a new dataset named `mn_wi` that sorts the counties in Minnesota and Wisconsin from lowest to highest in terms of the *change* in Democratic vote percentage in 2020 vs 2016.
+This dataset should include the following variables (and only these variables): `state_name`, `county_name`, `dem_pct_20`, `dem_pct_20`, and a variable measuring the change in Democratic vote percentage in 2020 vs 2016.
 
 ```{r}
 # Define the dataset
@@ -310,7 +291,7 @@ head(mn_wi)
 
 ```
 
-#### Part c {-}
+#### Part c {.unnumbered}
 
 Construct and discuss a plot of the county-level change in Democratic vote percent in 2020 vs 2016, and how this differs between Minnesota and Wisconsin.
 
@@ -321,13 +302,13 @@ mn_wi <- elections |>
 
 ```
 
-
-
-### Exercise 7: `summarize` Demo {-}
+### Exercise 7: `summarize` Demo {.unnumbered}
 
 6 verbs: `select`, `filter`, `arrange`, `mutate`, `summarize`, `group_by`
 
-Let's talk about the last 2 verbs. `summarize()` (or equivalently `summarise()`) takes an entire data frame as input and outputs a single row with one or more summary statistics. For each chunk below, indicate what the code does.
+Let's talk about the last 2 verbs.
+`summarize()` (or equivalently `summarise()`) takes an entire data frame as input and outputs a single row with one or more summary statistics.
+For each chunk below, indicate what the code does.
 
 ```{r}
 # What does this do?
@@ -349,12 +330,10 @@ Let's talk about the last 2 verbs. `summarize()` (or equivalently `summarise()`)
    summarize(median_repub = median(repub_pct_20), total_votes = sum(total_votes_20))
 ```
 
+### Exercise 8: `summarize` + `group_by` demo {.unnumbered}
 
-
-### Exercise 8: `summarize` + `group_by` demo {-}
-
-
-Finally, `group_by()` groups the units of observation or rows of a data frame by a specified set of variables. Alone, this function doesn't change the appearance of our dataset or seem to do anything at all:
+Finally, `group_by()` groups the units of observation or rows of a data frame by a specified set of variables.
+Alone, this function doesn't change the appearance of our dataset or seem to do anything at all:
 
 ```{r}
  elections_small |> 
@@ -385,23 +364,21 @@ Where it really shines is in partnership with `summarize()`.
 ```
 
 ::: {.callout-warning title="Reflect"}
-
-Notice that `group_by()` with `summarize()` produces new data frame or tibble! But the units of observation are now states instead of counties within states.
-
+Notice that `group_by()` with `summarize()` produces new data frame or tibble!
+But the units of observation are now states instead of counties within states.
 :::
 
-
-
-### Exercise 9: DIY {-}
+### Exercise 9: DIY {.unnumbered}
 
 Let's practice (some of) our 6 verbs: `select`, `filter`, `arrange`, `mutate`, `summarize`, `group_by` Remember:
 
 -   Before writing any code, translate the given prompts: how many distinct wrangling steps are needed and what verb do we need in each step?
 -   Add each verb one at a time.
 
-#### Part a {-}
+#### Part a {.unnumbered}
 
-NOTE: Part a is a challenge exercise. If you get really stuck, move on to Part b which is the same overall question, but with hints.
+NOTE: Part a is a challenge exercise.
+If you get really stuck, move on to Part b which is the same overall question, but with hints.
 
 ```{r}
 # Sort the *states* from the most to least total votes cast in 2020
@@ -430,7 +407,7 @@ elections_small |>
   
 ```
 
-#### Part b {-}
+#### Part b {.unnumbered}
 
 ```{r}
 # Sort the states from the most to least total votes cast in 2020
@@ -475,9 +452,7 @@ elections_small |>
   select(state_name)
 ```
 
-
-
-### Exercise 10: Practice on New Data {-}
+### Exercise 10: Practice on New Data {.unnumbered}
 
 Recall the World Cup football/soccer data from TidyTuesday:
 
@@ -485,7 +460,8 @@ Recall the World Cup football/soccer data from TidyTuesday:
 world_cup <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-29/worldcups.csv")
 ```
 
-You can find a codebook [here](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-11-29). Use (some of) our 6 verbs (`select`, `filter`, `arrange`, `mutate`, `summarize`, `group_by`) and data viz to address the following prompts.
+You can find a codebook [here](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-11-29).
+Use (some of) our 6 verbs (`select`, `filter`, `arrange`, `mutate`, `summarize`, `group_by`) and data viz to address the following prompts.
 
 ```{r}
 # In what years did Brazil win the World Cup?
@@ -539,6 +515,7 @@ ggplot(world_cup, aes(x=year,y=goals_scored))+
 world_cup1 <-world_cup |>
   mutate(ave_goals=goals_scored/games)
 ```
+
 ```{r}
 ggplot(world_cup1, aes(x=year, y=ave_goals))+
   geom_point(color="black", fill="white")+
@@ -546,10 +523,8 @@ ggplot(world_cup1, aes(x=year, y=ave_goals))+
   labs(x="Year of World Cup", y="Typical Number of Goals Scored (per game)")
 ```
 
+### Exercise 11: Practice on Your Data {.unnumbered}
 
-
-
-### Exercise 11: Practice on Your Data {-}
-
-Return to the TidyTuesday data you're using in Homework 3. Use your new wrangling skills to play around. What new insights can you gain?!
-
+Return to the TidyTuesday data you're using in Homework 3.
+Use your new wrangling skills to play around.
+What new insights can you gain?!

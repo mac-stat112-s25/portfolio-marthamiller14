@@ -30,9 +30,9 @@ book:
       - bw/bw-tri.qmd
       - bw/bw-quad.qmd
       - bw/bw-spatial.qmd
-      - bw/bw-exam1.qmd
+      - bw/exam1.qmd
       - bw/solo_project.qmd
-      - bw/bw-exam2.qmd
+      - bw/exam2.qmd
 
     - part: "In-class Activities"
       chapters: 
@@ -47,7 +47,14 @@ book:
       - ica/ica-factors.qmd
       - ica/ica-strings.qmd
       - ica/ica-data_import.qmd
-
+      
+    - part: "Summary Sheets"
+      chapters: 
+      - summary/Ex1_sumsheet_pt.1.png
+      - summary/Ex1_sumsheet_pt.2.png
+      - summary/Ex1_sumsheet_pt.3.png
+      - summary/Ex2_sumsheet.pdf
+      
 format:
   html:
     theme:
