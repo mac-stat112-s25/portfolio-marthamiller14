@@ -1,6 +1,14 @@
 ---
 title: "Solo Project"
 editor: visual
+execute:
+  echo: true
+  warning: false
+  error: false
+
+format: 
+  html: 
+    code-fold: true
 ---
 
 ```{r}
@@ -39,18 +47,17 @@ wi_map <- left_join(wi_counties, polling_counts, by = c("NAME" = "county"))
 
 ```{r}
 
-#|fig_cap: "Map of Wisconsin showing density of polling places within each county. The map shows that there are the most in the southern counties where Milwaukee and Madison are which have the greatest populations."
 
 #|fig_alt: "A spacial map of Wisconsin broken into county boundaries. The color of the county represents the amount of polling places within the county. The lighter color designates a county that has more polling places where a darker color is lesser amounts."
 #|
 ggplot(wi_map) +
-  geom_sf(aes(fill=n), color="black")+
+  geom_sf(aes(fill=n), color="white")+
   scale_fill_viridis_c(option="magma", na.value = "grey")+
-  labs(title= "Polling Places in Wisconsin by County (2020-2021)", fill= "Polling Places")+
+  labs(title= "Polling Places in Wisconsin by County (2020-2021)", fill= "Polling Places", caption= "Data from: TidyTuesday Github Repository, Created by: Martha Miller, Date: 04/07/2025", )+
   theme_minimal()
 ```
 
-::: This plot of the polling_places data set shows that the counties in the southern part of Wisconsin have the most polling places.
+This plot of the polling_places data set shows that the counties in the southern part of Wisconsin have the most polling places.
 This is because those counties have the larger cities of Milwaukee and Madison in them with more population.
 Northern Wisconsin has much fewer people and needs less options for polling places.
-:::
+

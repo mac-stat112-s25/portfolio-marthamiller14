@@ -34,6 +34,11 @@ book:
       - bw/solo_project.qmd
       - bw/exam2.qmd
 
+    - part: "Summary Sheets"
+      chapters: 
+      - summary/ex1_summary.qmd
+      - summary/ex2_summary.qmd
+      
     - part: "In-class Activities"
       chapters: 
       - ica/ica-uni.qmd
@@ -48,12 +53,6 @@ book:
       - ica/ica-strings.qmd
       - ica/ica-data_import.qmd
       
-    - part: "Summary Sheets"
-      chapters: 
-      - summary/Ex1_sumsheet_pt.1.png
-      - summary/Ex1_sumsheet_pt.2.png
-      - summary/Ex1_sumsheet_pt.3.png
-      - summary/Ex2_sumsheet.pdf
       
 format:
   html:

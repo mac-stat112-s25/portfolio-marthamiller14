@@ -1,6 +1,14 @@
 ---
 title: "Exam 2"
 editor: visual
+execute:
+  echo: true
+  warning: false
+  error: false
+
+format: 
+  html: 
+    code-fold: true
 ---
 
 ```{r}
@@ -18,6 +26,7 @@ library(sf)
 str(fc)
 head(fc)
 ```
+
 ```{r}
 fc |>
   select(food_category)
@@ -35,6 +44,7 @@ fcc <- fc |>
 
 head(fcc,11)
 ```
+
 ```{r}
 #cc <- fc |>
  # group_by(country) |>
@@ -43,7 +53,10 @@ head(fcc,11)
 
 #print(cc)
 ```
+
 ```{r}
+#| fig-height: 25 
+#| fig-width: 10
 #|fig_cap: "Faceted maps showing global food consumption by each category of food. There are 11 categories of food. It shows that the milk and cheese category has byfar the most consumed. "
 
 #|fig_alt: "A facet wrapped map showing global food consumption. Maps are faceted by each food category on a map showing the world. Lighter areas on the map represent a greater kg/person/year for each food category. Data is "food_consumption.csv".
@@ -58,16 +71,13 @@ food_by_country_category <- fc|>
 map_data <- world |>
   left_join(food_by_country_category, by = c("name" = "country"))
 
-#| fig-height:22
-#| fig-width: 11
-
 ggplot(map_data) +
   geom_sf(aes(fill = total_consumption), color = "gray70", size = 0.1) +
   scale_fill_viridis_c(option = "C", na.value = "lightgray") +
-  facet_wrap(~ food_category) +
+  facet_wrap(~ food_category, ncol= 2) +
   labs(
     title = "Global Food Consumption by Category",
-    fill = "kg/person/year"
+    fill = "kg/person/year", caption= "Data from: TidyTuesday Github Repository, Created by: Martha Miller, Date: 02/23/2025"
   ) +
   theme_minimal() +
   theme(
@@ -77,5 +87,3 @@ ggplot(map_data) +
   )  
 
 ```
-
-

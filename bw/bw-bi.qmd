@@ -1,8 +1,15 @@
 ---
 title: "Bivariate Viz"
+execute:
+  echo: true
+  warning: false
+  error: false
+
+format: 
+  html: 
+    code-fold: true
 ---
 
-Use this file to generate a professional looking **bivariate** visualization.  The visualization will not perfect the first time but you are expected to improve it throughout the semester especially after covering advanced topics such as effective viz.
 ```{r}
 library(tidyverse)
 library (sf)
@@ -22,13 +29,12 @@ elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv"
 
 
 ```{r}
-#|fig-cap: "This figure shows the relationship between the Republican vote percentage in 2016 and 2020. The x-axis represents the 2016 votes and the y-axis represents the 2020 votes."
 
 #|fig_alt: "This visualization is of a scatter plot of republican vote percentage in 2016 and 2020. The biggest takeaway is that the two variables are have strong positive correlation. Data from elections-https://mac-stat.github.io/data/election_2020_county.csv"
 
 ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
   geom_point()+
-  labs(x="Republican % Vote (2016)", y="Republican % Vote (2020)", title= "Relationship between Republican Vote %")+
+  labs(x="Republican % Vote (2016)", y="Republican % Vote (2020)", title= "Relationship between Republican Vote %", caption= "Data from: TidyTuesday Github Repository, Created by: Martha Miller, Date: 02/23/2025")+
 scale_color_viridis_d()
 
 ```

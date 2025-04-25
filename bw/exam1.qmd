@@ -1,6 +1,14 @@
 ---
 title: "Exam 1"
 editor: visual
+execute:
+  echo: true
+  warning: false
+  error: false
+
+format: 
+  html: 
+    code-fold: true
 ---
 
 ```{r}
@@ -78,18 +86,7 @@ ggplot() +
              aes(x = lon, y = lat, size = consumption, color = food_category),
              alpha = 0.7) +  
   scale_size(range = c(1, 10)) +  
-  labs(title = "Global Food Consumption", subtitle = "(Size = Consumption, Color = Food Category)", x = "Longitude", y = "Latitude") +
+  labs(title = "Global Food Consumption", subtitle = "(Size = Consumption, Color = Food Category)", x = "Longitude", y = "Latitude", caption= "Data from: TidyTuesday Github Repository, Created by: Martha Miller, Date: 02/23/2025") +
   theme_minimal()
   
-```
-
-My study sheet images are below.
-(I couldnt get them to upload in but I do have them done and copies saved)
-
-```{r}
-#knitr::include_graphics("STAT112 (exam 1) study sheet pt.1.png")
-#knitr::include_graphics("STAT112  (exam 1) study sheet pt.2.png")
-#knitr::include_graphics("STAT112  (exam 1) study sheet pt.3.png")
-
-
 ```

@@ -1,8 +1,15 @@
 ---
 title: "Trivariate Viz"
+execute:
+  echo: true
+  warning: false
+  error: false
+
+format: 
+  html: 
+    code-fold: true
 ---
 
-Use this file to generate a professional looking **trivariate** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
 
 ```{r}
 library(tidyverse)
@@ -30,7 +37,7 @@ weather <- read.csv("https://mac-stat.github.io/data/weather_3_locations.csv") |
 
 ggplot(weather, aes(y = temp3pm, x = temp9am, color = location)) + 
   geom_point(alpha=0.5)+
-  labs(x="Temperature at 3:00 PM", y="Temperature at 9:00 AM", color="Location",title="Comparing Temperatures of Different Times of the Day in Locations")+
+  labs(x="Temperature at 3:00 PM", y="Temperature at 9:00 AM", color="Location",title="Comparing Temperatures of Different Times of the Day in Locations", caption= "Data from: TidyTuesday Github Repository, Created by: Martha Miller, Date: 02/23/2025")+
   scale_color_viridis_d()
 ```
 
